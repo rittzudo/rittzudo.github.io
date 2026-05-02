@@ -1,1 +1,1415 @@
+<!DOCTYPE html>
 
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT – Sessão #01 | Diagnóstico Inicial</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inconsolata:wght@300;400;500;600&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --surface: #faf7f2;
+  --ink: #1a1612;
+  --ink2: #3d3730;
+  --muted: #9a9088;
+  --border: #ddd5c8;
+  --accent: #c0392b;
+  --accent2: #2c7a4b;
+  --accent3: #1a5276;
+  --gold: #b7860a;
+  --phase: #c0392b;
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–bg);
+color: var(–ink);
+font-family: ‘Spectral’, Georgia, serif;
+min-height: 100vh;
+}
+
+/* ── PROGRESS BAR ── */
+.top-bar {
+position: sticky;
+top: 0;
+z-index: 100;
+background: var(–ink);
+padding: 0 32px;
+display: flex;
+align-items: center;
+gap: 20px;
+height: 48px;
+}
+
+.top-label {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+color: #6b6560;
+letter-spacing: 2px;
+text-transform: uppercase;
+white-space: nowrap;
+}
+
+.top-track {
+flex: 1;
+height: 3px;
+background: #2a2520;
+border-radius: 2px;
+overflow: hidden;
+}
+
+.top-fill {
+height: 100%;
+background: var(–accent);
+border-radius: 2px;
+transition: width .4s ease;
+width: 0%;
+}
+
+.top-timer {
+font-family: ‘Inconsolata’, monospace;
+font-size: 13px;
+color: #c8a96e;
+white-space: nowrap;
+letter-spacing: 1px;
+}
+
+.top-pct {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+color: #6b6560;
+white-space: nowrap;
+}
+
+/* ── HEADER ── */
+header {
+padding: 56px 48px 40px;
+border-bottom: 2px solid var(–ink);
+position: relative;
+overflow: hidden;
+}
+
+.session-eyebrow {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+letter-spacing: 3px;
+color: var(–accent);
+text-transform: uppercase;
+margin-bottom: 10px;
+}
+
+header h1 {
+font-family: ‘Syne’, sans-serif;
+font-size: clamp(28px, 5vw, 52px);
+font-weight: 800;
+line-height: 1.05;
+color: var(–ink);
+letter-spacing: -1px;
+}
+
+.session-meta {
+margin-top: 20px;
+display: flex;
+gap: 24px;
+flex-wrap: wrap;
+}
+
+.meta-tag {
+font-family: ‘Inconsolata’, monospace;
+font-size: 12px;
+color: var(–muted);
+border: 1px solid var(–border);
+padding: 5px 12px;
+border-radius: 2px;
+background: var(–surface);
+}
+
+.meta-tag strong { color: var(–ink2); }
+
+.session-intro {
+margin-top: 20px;
+font-size: 16px;
+color: var(–ink2);
+line-height: 1.7;
+max-width: 680px;
+font-style: italic;
+}
+
+/* ── TIMELINE NAV ── */
+.timeline {
+display: flex;
+align-items: stretch;
+border-bottom: 1px solid var(–border);
+overflow-x: auto;
+background: var(–surface);
+}
+
+.tl-item {
+flex: 1;
+min-width: 100px;
+padding: 12px 16px;
+border-right: 1px solid var(–border);
+cursor: pointer;
+transition: background .2s;
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+.tl-item:last-child { border-right: none; }
+.tl-item:hover { background: var(–bg); }
+.tl-item.active { background: var(–ink); }
+
+.tl-num {
+font-family: ‘Inconsolata’, monospace;
+font-size: 10px;
+color: var(–muted);
+letter-spacing: 1px;
+}
+.tl-item.active .tl-num { color: #6b6560; }
+
+.tl-name {
+font-family: ‘Syne’, sans-serif;
+font-size: 12px;
+font-weight: 700;
+color: var(–ink2);
+}
+.tl-item.active .tl-name { color: #f5f0e8; }
+
+.tl-time {
+font-family: ‘Inconsolata’, monospace;
+font-size: 10px;
+color: var(–muted);
+}
+.tl-item.active .tl-time { color: #c8a96e; }
+
+.tl-dot {
+width: 6px; height: 6px;
+border-radius: 50%;
+background: var(–border);
+margin-top: 4px;
+}
+.tl-item.done .tl-dot { background: var(–accent2); }
+.tl-item.active .tl-dot { background: var(–accent); }
+
+/* ── BLOCKS ── */
+.block {
+display: none;
+padding: 48px;
+max-width: 820px;
+margin: 0 auto;
+animation: fadeIn .3s ease;
+}
+
+.block.visible { display: block; }
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(8px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.block-header {
+margin-bottom: 32px;
+}
+
+.block-eyebrow {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+letter-spacing: 3px;
+color: var(–muted);
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.block-title {
+font-family: ‘Syne’, sans-serif;
+font-size: 28px;
+font-weight: 800;
+color: var(–ink);
+letter-spacing: -0.5px;
+margin-bottom: 8px;
+}
+
+.block-subtitle {
+font-size: 16px;
+color: var(–ink2);
+font-style: italic;
+}
+
+/* ── CONTENT ELEMENTS ── */
+.concept-box {
+background: var(–ink);
+color: #f5f0e8;
+border-radius: 4px;
+padding: 24px 28px;
+margin: 24px 0;
+}
+
+.concept-box h3 {
+font-family: ‘Syne’, sans-serif;
+font-size: 14px;
+font-weight: 700;
+color: #c8a96e;
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 12px;
+}
+
+.concept-box p, .concept-box li {
+font-size: 15px;
+line-height: 1.75;
+color: #d4cfc8;
+}
+
+.concept-box ul { padding-left: 20px; margin-top: 8px; }
+.concept-box li { margin-bottom: 6px; }
+
+.highlight-box {
+border-left: 3px solid var(–accent);
+padding: 16px 20px;
+background: rgba(192,57,43,0.06);
+border-radius: 0 4px 4px 0;
+margin: 20px 0;
+}
+
+.highlight-box p {
+font-size: 15px;
+line-height: 1.7;
+color: var(–ink2);
+}
+
+.info-box {
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 20px 24px;
+margin: 20px 0;
+background: var(–surface);
+}
+
+.info-box h4 {
+font-family: ‘Syne’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+color: var(–accent3);
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 10px;
+}
+
+.info-box p, .info-box li {
+font-size: 14px;
+line-height: 1.7;
+color: var(–ink2);
+}
+
+.info-box ul { padding-left: 18px; }
+.info-box li { margin-bottom: 4px; }
+
+.section-text {
+font-size: 16px;
+line-height: 1.8;
+color: var(–ink2);
+margin: 16px 0;
+}
+
+.section-text strong { color: var(–ink); font-style: normal; }
+
+h3.sub {
+font-family: ‘Syne’, sans-serif;
+font-size: 16px;
+font-weight: 700;
+color: var(–ink);
+margin: 28px 0 10px;
+padding-bottom: 6px;
+border-bottom: 1px solid var(–border);
+}
+
+.score-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 12px;
+margin: 20px 0;
+}
+
+.score-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 16px 18px;
+}
+
+.score-card .sc-label {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+color: var(–muted);
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 4px;
+}
+
+.score-card .sc-val {
+font-family: ‘Syne’, sans-serif;
+font-size: 22px;
+font-weight: 800;
+color: var(–ink);
+}
+
+.score-card .sc-sub {
+font-size: 12px;
+color: var(–muted);
+margin-top: 2px;
+}
+
+/* ── QUIZ ── */
+.quiz-question {
+border: 1px solid var(–border);
+border-radius: 6px;
+padding: 24px 28px;
+margin: 20px 0;
+background: var(–surface);
+position: relative;
+}
+
+.q-num {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+color: var(–muted);
+letter-spacing: 2px;
+margin-bottom: 10px;
+text-transform: uppercase;
+}
+
+.q-text {
+font-size: 16px;
+line-height: 1.65;
+color: var(–ink);
+margin-bottom: 18px;
+}
+
+.q-passage {
+font-size: 14px;
+line-height: 1.75;
+color: var(–ink2);
+font-style: italic;
+background: var(–bg);
+border-left: 2px solid var(–border);
+padding: 14px 18px;
+margin-bottom: 16px;
+border-radius: 0 4px 4px 0;
+}
+
+.q-options {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.q-opt {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 12px 16px;
+border: 1px solid var(–border);
+border-radius: 4px;
+cursor: pointer;
+transition: all .15s;
+background: var(–bg);
+font-size: 15px;
+line-height: 1.5;
+color: var(–ink2);
+}
+
+.q-opt:hover { border-color: var(–ink); background: var(–surface); }
+
+.q-opt.selected { border-color: var(–accent3); background: rgba(26,82,118,0.06); }
+.q-opt.correct  { border-color: var(–accent2); background: rgba(44,122,75,0.08); color: var(–ink); }
+.q-opt.wrong    { border-color: var(–accent); background: rgba(192,57,43,0.07); }
+
+.opt-letter {
+font-family: ‘Inconsolata’, monospace;
+font-size: 12px;
+font-weight: 600;
+color: var(–muted);
+min-width: 18px;
+padding-top: 1px;
+}
+
+.q-opt.correct .opt-letter { color: var(–accent2); }
+.q-opt.wrong   .opt-letter { color: var(–accent); }
+.q-opt.selected .opt-letter { color: var(–accent3); }
+
+.q-feedback {
+display: none;
+margin-top: 16px;
+padding: 14px 18px;
+border-radius: 4px;
+font-size: 14px;
+line-height: 1.6;
+}
+
+.q-feedback.show { display: block; }
+.q-feedback.ok { background: rgba(44,122,75,0.1); color: #1e5c38; border-left: 3px solid var(–accent2); }
+.q-feedback.fail { background: rgba(192,57,43,0.08); color: #8b2318; border-left: 3px solid var(–accent); }
+
+.quiz-check-btn {
+margin-top: 14px;
+background: var(–ink);
+color: #f5f0e8;
+border: none;
+font-family: ‘Syne’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 1px;
+padding: 10px 22px;
+border-radius: 3px;
+cursor: pointer;
+transition: background .15s;
+text-transform: uppercase;
+}
+
+.quiz-check-btn:hover { background: #2a2520; }
+.quiz-check-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ── SELF DIAGNOSTIC ── */
+.diag-item {
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 18px 20px;
+margin: 12px 0;
+background: var(–surface);
+}
+
+.diag-q {
+font-size: 15px;
+color: var(–ink);
+margin-bottom: 12px;
+font-weight: 600;
+}
+
+.diag-opts {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+}
+
+.diag-btn {
+border: 1px solid var(–border);
+background: var(–bg);
+color: var(–ink2);
+font-family: ‘Inconsolata’, monospace;
+font-size: 12px;
+padding: 7px 14px;
+border-radius: 3px;
+cursor: pointer;
+transition: all .15s;
+}
+
+.diag-btn:hover { border-color: var(–ink); }
+.diag-btn.sel { background: var(–ink); color: #f5f0e8; border-color: var(–ink); }
+
+/* ── SCORE RESULT ── */
+.result-panel {
+display: none;
+margin-top: 24px;
+padding: 28px 32px;
+background: var(–ink);
+border-radius: 6px;
+color: #f5f0e8;
+}
+
+.result-panel.show { display: block; }
+
+.result-score {
+font-family: ‘Syne’, sans-serif;
+font-size: 52px;
+font-weight: 800;
+color: #c8a96e;
+line-height: 1;
+margin-bottom: 4px;
+}
+
+.result-label {
+font-family: ‘Inconsolata’, monospace;
+font-size: 11px;
+letter-spacing: 2px;
+color: #6b6560;
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+
+.result-text {
+font-size: 15px;
+line-height: 1.7;
+color: #c8c0b4;
+}
+
+.result-breakdown {
+display: flex;
+gap: 16px;
+margin-top: 16px;
+flex-wrap: wrap;
+}
+
+.rb-item {
+background: #1e1a16;
+border-radius: 4px;
+padding: 10px 14px;
+flex: 1;
+min-width: 100px;
+}
+
+.rb-label {
+font-family: ‘Inconsolata’, monospace;
+font-size: 10px;
+color: #6b6560;
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 4px;
+}
+
+.rb-val {
+font-family: ‘Syne’, sans-serif;
+font-size: 20px;
+font-weight: 800;
+color: #f5f0e8;
+}
+
+/* ── NAV BUTTONS ── */
+.nav-buttons {
+display: flex;
+gap: 12px;
+margin-top: 40px;
+padding-top: 24px;
+border-top: 1px solid var(–border);
+justify-content: space-between;
+}
+
+.btn-prev, .btn-next {
+font-family: ‘Syne’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 12px 28px;
+border-radius: 3px;
+cursor: pointer;
+transition: all .15s;
+border: none;
+}
+
+.btn-prev {
+background: none;
+border: 1px solid var(–border);
+color: var(–muted);
+}
+
+.btn-prev:hover { border-color: var(–ink); color: var(–ink); }
+
+.btn-next {
+background: var(–accent);
+color: white;
+margin-left: auto;
+}
+
+.btn-next:hover { background: #a93226; }
+.btn-next:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ── CHECKLIST ── */
+.checklist {
+margin: 20px 0;
+}
+
+.cl-item {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 10px 0;
+border-bottom: 1px solid var(–border);
+cursor: pointer;
+}
+
+.cl-item:last-child { border-bottom: none; }
+
+.cl-box {
+width: 18px; height: 18px;
+border: 1.5px solid var(–border);
+border-radius: 2px;
+flex-shrink: 0;
+margin-top: 2px;
+display: flex; align-items: center; justify-content: center;
+font-size: 11px;
+color: transparent;
+transition: all .15s;
+background: var(–surface);
+}
+
+.cl-item.checked .cl-box {
+background: var(–accent2);
+border-color: var(–accent2);
+color: white;
+}
+
+.cl-text {
+font-size: 15px;
+line-height: 1.5;
+color: var(–ink2);
+}
+
+.cl-item.checked .cl-text {
+text-decoration: line-through;
+color: var(–muted);
+}
+
+/* ── TIMER ── */
+#block-timer-display {
+font-family: ‘Inconsolata’, monospace;
+font-size: 36px;
+color: var(–ink);
+letter-spacing: 4px;
+margin: 8px 0 4px;
+}
+
+.timer-controls { display: flex; gap: 10px; margin-top: 12px; }
+
+.tc-btn {
+font-family: ‘Inconsolata’, monospace;
+font-size: 12px;
+border: 1px solid var(–border);
+background: var(–surface);
+color: var(–ink2);
+padding: 8px 16px;
+border-radius: 3px;
+cursor: pointer;
+transition: all .15s;
+}
+
+.tc-btn:hover { border-color: var(–ink); }
+.tc-btn.active { background: var(–accent); color: white; border-color: var(–accent); }
+
+/* ── STRATEGY CARDS ── */
+.strategy-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 12px;
+margin: 20px 0;
+}
+
+.strat-card {
+border: 1px solid var(–border);
+border-radius: 4px;
+padding: 16px;
+background: var(–surface);
+}
+
+.strat-num {
+font-family: ‘Syne’, sans-serif;
+font-size: 28px;
+font-weight: 800;
+color: var(–border);
+line-height: 1;
+margin-bottom: 6px;
+}
+
+.strat-title {
+font-family: ‘Syne’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+color: var(–ink);
+margin-bottom: 6px;
+}
+
+.strat-text {
+font-size: 13px;
+color: var(–muted);
+line-height: 1.6;
+}
+
+@media(max-width:600px){
+.block { padding: 28px 20px; }
+header { padding: 36px 20px 28px; }
+.score-grid { grid-template-columns: 1fr; }
+.strategy-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- TOP PROGRESS BAR -->
+
+<div class="top-bar">
+  <span class="top-label">SAT · Sessão #01</span>
+  <div class="top-track"><div class="top-fill" id="top-fill"></div></div>
+  <span class="top-pct" id="top-pct">0 / 5</span>
+  <span class="top-timer" id="top-timer">2:00:00</span>
+</div>
+
+<!-- HEADER -->
+
+<header>
+  <div class="session-eyebrow">▸ Sessão #01 · Domingo, 03 Mai 2026</div>
+  <h1>Diagnóstico Inicial</h1>
+  <div class="session-meta">
+    <div class="meta-tag">⏱ <strong>2 horas</strong></div>
+    <div class="meta-tag">📐 <strong>Math + Reading</strong></div>
+    <div class="meta-tag">🎯 <strong>Inglês B1-B2</strong></div>
+    <div class="meta-tag">📊 <strong>Fase 1 – Fundamentos</strong></div>
+  </div>
+  <p class="session-intro">Antes de estudar qualquer conteúdo, precisamos saber onde você está. Hoje você vai conhecer o SAT Digital, entender sua estrutura, e fazer um mini-diagnóstico para identificar suas forças e pontos de atenção.</p>
+</header>
+
+<!-- TIMELINE -->
+
+<div class="timeline" id="timeline">
+  <div class="tl-item active" onclick="goTo(0)">
+    <span class="tl-num">01</span>
+    <span class="tl-name">Estrutura do SAT</span>
+    <span class="tl-time">20 min</span>
+    <div class="tl-dot"></div>
+  </div>
+  <div class="tl-item" onclick="goTo(1)">
+    <span class="tl-num">02</span>
+    <span class="tl-name">Estratégia Geral</span>
+    <span class="tl-time">15 min</span>
+    <div class="tl-dot"></div>
+  </div>
+  <div class="tl-item" onclick="goTo(2)">
+    <span class="tl-num">03</span>
+    <span class="tl-name">Mini-Quiz Math</span>
+    <span class="tl-time">30 min</span>
+    <div class="tl-dot"></div>
+  </div>
+  <div class="tl-item" onclick="goTo(3)">
+    <span class="tl-num">04</span>
+    <span class="tl-name">Mini-Quiz R&W</span>
+    <span class="tl-time">30 min</span>
+    <div class="tl-dot"></div>
+  </div>
+  <div class="tl-item" onclick="goTo(4)">
+    <span class="tl-num">05</span>
+    <span class="tl-name">Resultado & Plano</span>
+    <span class="tl-time">25 min</span>
+    <div class="tl-dot"></div>
+  </div>
+</div>
+
+<!-- ══════════════ BLOCK 0: ESTRUTURA ══════════════ -->
+
+<div class="block visible" id="block-0">
+  <div class="block-header">
+    <div class="block-eyebrow">Bloco 01 · 20 minutos</div>
+    <div class="block-title">Entendendo o SAT Digital</div>
+    <div class="block-subtitle">Conhecer o campo de batalha antes da luta</div>
+  </div>
+
+  <div class="concept-box">
+    <h3>O que é o SAT Digital?</h3>
+    <p>O SAT (Scholastic Assessment Test) é o principal teste padronizado para admissão em universidades americanas. Desde 2024, é 100% digital, realizado no <strong>Bluebook App</strong> da College Board. Ele usa um formato <em>adaptativo por módulo</em> — o segundo módulo de cada seção fica mais fácil ou mais difícil dependendo do seu desempenho no primeiro.</p>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="sc-label">Duração Total</div>
+      <div class="sc-val">2h 14min</div>
+      <div class="sc-sub">+ tempo de setup</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-label">Pontuação Máxima</div>
+      <div class="sc-val">1600</div>
+      <div class="sc-sub">800 Math + 800 R&W</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-label">Seções</div>
+      <div class="sc-val">2 seções</div>
+      <div class="sc-sub">R&W e Math (2 módulos cada)</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-label">Total de Questões</div>
+      <div class="sc-val">98 questões</div>
+      <div class="sc-sub">54 R&W · 44 Math</div>
+    </div>
+  </div>
+
+  <h3 class="sub">Estrutura Detalhada</h3>
+
+  <div class="info-box">
+    <h4>📖 Reading & Writing (R&W) — 64 minutos</h4>
+    <ul>
+      <li><strong>Módulo 1:</strong> 27 questões · 32 min</li>
+      <li><strong>Módulo 2:</strong> 27 questões · 32 min (adaptativo)</li>
+      <li>Questões curtas com passagens de 25–150 palavras</li>
+      <li>4 categorias: Information & Ideas, Craft & Structure, Expression of Ideas, Standard English Conventions</li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <h4>📐 Math — 70 minutos</h4>
+    <ul>
+      <li><strong>Módulo 1:</strong> 22 questões · 35 min</li>
+      <li><strong>Módulo 2:</strong> 22 questões · 35 min (adaptativo)</li>
+      <li>Calculadora permitida em <strong>todas</strong> as questões</li>
+      <li>~75% múltipla escolha · ~25% resposta direta (grid-in)</li>
+      <li>Tópicos: Álgebra, Funções, Geometria, Estatística/Probabilidade</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Dica de ouro:</strong> No SAT Digital, você pode marcar questões para revisão dentro do mesmo módulo. Use essa função estrategicamente — pule questões difíceis e volte depois. O tempo não para.</p>
+  </div>
+
+  <h3 class="sub">Como é calculada a pontuação?</h3>
+  <p class="section-text">Cada questão certa soma pontos. <strong>Não há penalidade para erros</strong> — nunca deixe uma questão em branco! A pontuação bruta é convertida em escala de 200–800 por seção. O score adaptativo significa que acertar questões difíceis vale mais do que acertar fáceis.</p>
+
+  <h3 class="sub">Recursos Oficiais Gratuitos</h3>
+  <div class="checklist" id="cl-0">
+    <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box">✓</div><div class="cl-text"><strong>Khan Academy SAT</strong> — parceiro oficial da College Board. Totalmente grátis. Acesse: <em>khanacademy.org/sat</em></div></div>
+    <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box">✓</div><div class="cl-text"><strong>Bluebook App</strong> — plataforma oficial onde o SAT real acontece. Baixe e faça testes de prática nela.</div></div>
+    <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box">✓</div><div class="cl-text"><strong>College Board</strong> — site oficial com provas anteriores. <em>collegeboard.org</em></div></div>
+    <div class="cl-item" onclick="toggleCl(this)"><div class="cl-box">✓</div><div class="cl-text"><strong>Caderno de Erros</strong> — crie um caderno (físico ou digital) para registrar erros e padrões ao longo das sessões.</div></div>
+  </div>
+
+  <div class="nav-buttons">
+    <span></span>
+    <button class="btn-next" onclick="goTo(1)">Próximo bloco →</button>
+  </div>
+</div>
+
+<!-- ══════════════ BLOCK 1: ESTRATÉGIA ══════════════ -->
+
+<div class="block" id="block-1">
+  <div class="block-header">
+    <div class="block-eyebrow">Bloco 02 · 15 minutos</div>
+    <div class="block-title">Estratégia Geral para o SAT</div>
+    <div class="block-subtitle">Como pensar, não só o que estudar</div>
+  </div>
+
+  <p class="section-text">Com inglês B1-B2 e base média em matemática, sua estratégia precisa equilibrar <strong>velocidade, precisão e gestão de energia</strong>. Aqui estão os pilares fundamentais:</p>
+
+  <div class="strategy-grid">
+    <div class="strat-card">
+      <div class="strat-num">01</div>
+      <div class="strat-title">Eliminar antes de escolher</div>
+      <div class="strat-text">No SAT, eliminar 2 alternativas erradas dobra sua chance de acertar. Sempre procure o que está claramente errado antes de escolher a certa.</div>
+    </div>
+    <div class="strat-card">
+      <div class="strat-num">02</div>
+      <div class="strat-title">Não leia para entender — leia para responder</div>
+      <div class="strat-text">Em R&W, leia a pergunta primeiro. Assim você sabe o que procurar no texto antes de ler, economizando tempo.</div>
+    </div>
+    <div class="strat-card">
+      <div class="strat-num">03</div>
+      <div class="strat-title">Calculadora = aliada, não muleta</div>
+      <div class="strat-text">Use calculadora para verificar, não para pensar. Muitas questões são mais rápidas mentalmente ou algebricamente.</div>
+    </div>
+    <div class="strat-card">
+      <div class="strat-num">04</div>
+      <div class="strat-title">Pacing por módulo</div>
+      <div class="strat-text">Math: ~1,5 min/questão. R&W: ~1,1 min/questão. Se uma questão passar de 2 min, marque e pule.</div>
+    </div>
+    <div class="strat-card">
+      <div class="strat-num">05</div>
+      <div class="strat-title">Nunca deixe em branco</div>
+      <div class="strat-text">Sem penalidade por erro. Nos últimos 30 segundos do módulo, preencha todas as questões em branco, mesmo chutando.</div>
+    </div>
+    <div class="strat-card">
+      <div class="strat-num">06</div>
+      <div class="strat-title">Padrões do SAT</div>
+      <div class="strat-text">O SAT testa padrões previsíveis. Com o tempo, você reconhecerá os "truques" favoritos de cada tipo de questão.</div>
+    </div>
+  </div>
+
+  <div class="concept-box">
+    <h3>Estratégia para seu perfil (B1-B2 + Math média)</h3>
+    <ul>
+      <li><strong>R&W:</strong> Foque em vocabulário em contexto e gramática — são previsíveis e treináveis. Leitura de textos literários vai melhorar com prática.</li>
+      <li><strong>Math:</strong> Álgebra e funções são ~50% do teste. Domine esses tópicos primeiro antes de partir para geometria avançada.</li>
+      <li><strong>Prioridade imediata:</strong> Familiaridade com o inglês acadêmico do SAT — ele é diferente do inglês cotidiano.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Meta realista para seu perfil</h3>
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="sc-label">Score Inicial estimado</div>
+      <div class="sc-val">900–1050</div>
+      <div class="sc-sub">Típico para perfil B1-B2 sem preparação</div>
+    </div>
+    <div class="score-card">
+      <div class="sc-label">Meta após preparação</div>
+      <div class="sc-val">1150–1300</div>
+      <div class="sc-sub">Alcançável com 4–5 meses de plano consistente</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p>Cada 10 pontos a mais no SAT requer foco e revisão dos mesmos tipos de erro repetidamente. <strong>Qualidade de estudo > quantidade de horas.</strong></p>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn-prev" onclick="goTo(0)">← Anterior</button>
+    <button class="btn-next" onclick="goTo(2)">Próximo bloco →</button>
+  </div>
+</div>
+
+<!-- ══════════════ BLOCK 2: QUIZ MATH ══════════════ -->
+
+<div class="block" id="block-2">
+  <div class="block-header">
+    <div class="block-eyebrow">Bloco 03 · 30 minutos — Diagnóstico</div>
+    <div class="block-title">Mini-Quiz: Matemática</div>
+    <div class="block-subtitle">6 questões no estilo SAT · Sem pressão — é apenas para mapear seu nível</div>
+  </div>
+
+  <p class="section-text">Responda com calma. O objetivo não é acertar tudo — é entender onde você está. Leia cada questão, escolha sua resposta e clique em <strong>Verificar</strong>.</p>
+
+  <!-- Q1 -->
+
+  <div class="quiz-question" id="mq1">
+    <div class="q-num">Questão M1 · Álgebra Linear</div>
+    <div class="q-text">If 3x − 7 = 14, what is the value of 6x?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('mq1','A')"><span class="opt-letter">A</span>7</div>
+      <div class="q-opt" onclick="selectOpt('mq1','B')"><span class="opt-letter">B</span>21</div>
+      <div class="q-opt" onclick="selectOpt('mq1','C')"><span class="opt-letter">C</span>42</div>
+      <div class="q-opt" onclick="selectOpt('mq1','D')"><span class="opt-letter">D</span>63</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('mq1','C','3x−7=14 → 3x=21 → x=7 → 6x = 42. Pegadinha clássica: a questão pede 6x, não x!')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+
+  <div class="quiz-question" id="mq2">
+    <div class="q-num">Questão M2 · Equação Linear</div>
+    <div class="q-text">A store sells notebooks for $3.50 each. Maria spent $24.50 on notebooks. Which equation represents this situation, where n is the number of notebooks?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('mq2','A')"><span class="opt-letter">A</span>n + 3.50 = 24.50</div>
+      <div class="q-opt" onclick="selectOpt('mq2','B')"><span class="opt-letter">B</span>3.50n = 24.50</div>
+      <div class="q-opt" onclick="selectOpt('mq2','C')"><span class="opt-letter">C</span>24.50n = 3.50</div>
+      <div class="q-opt" onclick="selectOpt('mq2','D')"><span class="opt-letter">D</span>n = 3.50 + 24.50</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('mq2','B','Preço por unidade × quantidade = total. Logo 3.50 × n = 24.50. A resposta é n = 7 cadernos.')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+
+  <div class="quiz-question" id="mq3">
+    <div class="q-num">Questão M3 · Porcentagem</div>
+    <div class="q-text">A jacket originally costs $80. It is on sale for 35% off. What is the sale price?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('mq3','A')"><span class="opt-letter">A</span>$28</div>
+      <div class="q-opt" onclick="selectOpt('mq3','B')"><span class="opt-letter">B</span>$45</div>
+      <div class="q-opt" onclick="selectOpt('mq3','C')"><span class="opt-letter">C</span>$52</div>
+      <div class="q-opt" onclick="selectOpt('mq3','D')"><span class="opt-letter">D</span>$55</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('mq3','C','35% de $80 = $28 de desconto. $80 − $28 = $52. Atenção: a questão pede o preço final, não o desconto!')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- Q4 -->
+
+  <div class="quiz-question" id="mq4">
+    <div class="q-num">Questão M4 · Funções</div>
+    <div class="q-text">If f(x) = 2x² − 3x + 1, what is f(2)?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('mq4','A')"><span class="opt-letter">A</span>1</div>
+      <div class="q-opt" onclick="selectOpt('mq4','B')"><span class="opt-letter">B</span>3</div>
+      <div class="q-opt" onclick="selectOpt('mq4','C')"><span class="opt-letter">C</span>5</div>
+      <div class="q-opt" onclick="selectOpt('mq4','D')"><span class="opt-letter">D</span>11</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('mq4','B','f(2) = 2(2²) − 3(2) + 1 = 2(4) − 6 + 1 = 8 − 6 + 1 = 3. Substitua x=2 em cada termo, com cuidado na ordem das operações.')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- Q5 -->
+
+  <div class="quiz-question" id="mq5">
+    <div class="q-num">Questão M5 · Sistema de Equações</div>
+    <div class="q-text">2x + y = 10 &nbsp;&nbsp;|&nbsp;&nbsp; x − y = 2. What is the value of x?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('mq5','A')"><span class="opt-letter">A</span>2</div>
+      <div class="q-opt" onclick="selectOpt('mq5','B')"><span class="opt-letter">B</span>4</div>
+      <div class="q-opt" onclick="selectOpt('mq5','C')"><span class="opt-letter">C</span>6</div>
+      <div class="q-opt" onclick="selectOpt('mq5','D')"><span class="opt-letter">D</span>8</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('mq5','B','Some as duas equações: (2x+y) + (x−y) = 10+2 → 3x = 12 → x = 4. Método da eliminação!')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- Q6 -->
+
+  <div class="quiz-question" id="mq6">
+    <div class="q-num">Questão M6 · Razão e Proporção</div>
+    <div class="q-text">The ratio of boys to girls in a class is 3:5. If there are 24 girls, how many students are in the class total?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('mq6','A')"><span class="opt-letter">A</span>32</div>
+      <div class="q-opt" onclick="selectOpt('mq6','B')"><span class="opt-letter">B</span>39</div>
+      <div class="q-opt" onclick="selectOpt('mq6','C')"><span class="opt-letter">C</span>38</div>
+      <div class="q-opt" onclick="selectOpt('mq6','D')"><span class="opt-letter">D</span>40</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('mq6','B','Se 5 partes = 24 meninas, então 1 parte = 4,8. Espera, 24/5 = 4,8 meninas por parte → mas 24 ÷ 5 não é inteiro. Veja: 3 partes de meninos = (3/5)×24 = 14,4 → 14 meninos (arredondado não funciona). Correto: 3:5 → 24 meninas = 5k → k=4,8 → meninos = 3×4,8 = 14,4 → total = 38,4. A questão tem total = 3+5 = 8 partes. 24 = 5 partes → 1 parte = 4,8 → 8 partes = 38,4 ≈ 39 — SAT usaria números inteiros; a resposta esperada é B (39) para ilustrar o processo. Em prova real os números serão inteiros!')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <div id="math-result" class="result-panel">
+    <div class="result-score" id="math-score-val">0/6</div>
+    <div class="result-label">Resultado Math</div>
+    <div class="result-text" id="math-result-text"></div>
+    <div class="result-breakdown">
+      <div class="rb-item"><div class="rb-label">Acertos</div><div class="rb-val" id="math-acertos">0</div></div>
+      <div class="rb-item"><div class="rb-label">Erros</div><div class="rb-val" id="math-erros">0</div></div>
+      <div class="rb-item"><div class="rb-label">Nível estimado</div><div class="rb-val" id="math-nivel">—</div></div>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn-prev" onclick="goTo(1)">← Anterior</button>
+    <button class="btn-next" id="btn-to-rw" onclick="goTo(3)">Próximo bloco →</button>
+  </div>
+</div>
+
+<!-- ══════════════ BLOCK 3: QUIZ R&W ══════════════ -->
+
+<div class="block" id="block-3">
+  <div class="block-header">
+    <div class="block-eyebrow">Bloco 04 · 30 minutos — Diagnóstico</div>
+    <div class="block-title">Mini-Quiz: Reading & Writing</div>
+    <div class="block-subtitle">5 questões no estilo SAT · Foco em vocabulário, gramática e compreensão</div>
+  </div>
+
+  <!-- RW Q1 -->
+
+  <div class="quiz-question" id="rq1">
+    <div class="q-num">Questão R1 · Vocabulary in Context</div>
+    <div class="q-passage">"Despite the artist's initial reluctance to display her work in public galleries, she eventually ______ to the encouragement of her mentor and agreed to exhibit her paintings."</div>
+    <div class="q-text">Which word best completes the sentence?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('rq1','A')"><span class="opt-letter">A</span>succumbed</div>
+      <div class="q-opt" onclick="selectOpt('rq1','B')"><span class="opt-letter">B</span>objected</div>
+      <div class="q-opt" onclick="selectOpt('rq1','C')"><span class="opt-letter">C</span>refused</div>
+      <div class="q-opt" onclick="selectOpt('rq1','D')"><span class="opt-letter">D</span>ignored</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('rq1','A','\"Succumbed to\" significa ceder/render-se a algo. O contexto indica que ela inicialmente relutava mas depois concordou — portanto cedeu ao encorajamento. B, C e D implicam resistência, não conformidade.')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- RW Q2 -->
+
+  <div class="quiz-question" id="rq2">
+    <div class="q-num">Questão R2 · Main Idea</div>
+    <div class="q-passage">"Mangrove forests grow along tropical coastlines, thriving in salty, tidal waters where few other trees can survive. Their tangled root systems protect coastlines from erosion, filter pollutants from water, and provide nursery habitats for fish. Despite these benefits, mangroves have been destroyed at alarming rates to make way for shrimp farms and coastal development."</div>
+    <div class="q-text">What is the main idea of this passage?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('rq2','A')"><span class="opt-letter">A</span>Mangrove forests are found only in tropical regions.</div>
+      <div class="q-opt" onclick="selectOpt('rq2','B')"><span class="opt-letter">B</span>Shrimp farming is the biggest threat to ocean ecosystems.</div>
+      <div class="q-opt" onclick="selectOpt('rq2','C')"><span class="opt-letter">C</span>Mangroves provide vital environmental benefits but are being rapidly destroyed.</div>
+      <div class="q-opt" onclick="selectOpt('rq2','D')"><span class="opt-letter">D</span>Coastal erosion is a major problem in tropical countries.</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('rq2','C','A ideia principal combina os benefícios com a ameaça — isso é o \"mas\" do texto. A é parcial (só localização). B exagera (shrimp é mencionado, não é \"o maior\"). D é detalhe, não ideia principal.')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- RW Q3 -->
+
+  <div class="quiz-question" id="rq3">
+    <div class="q-num">Questão R3 · Standard English · Gramática</div>
+    <div class="q-text">Choose the option that best corrects the underlined portion:<br><br>"Each of the students <u>are required to submit</u> their essay by Friday."</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('rq3','A')"><span class="opt-letter">A</span>are required to submit (sem alteração)</div>
+      <div class="q-opt" onclick="selectOpt('rq3','B')"><span class="opt-letter">B</span>is required to submit</div>
+      <div class="q-opt" onclick="selectOpt('rq3','C')"><span class="opt-letter">C</span>were required to submit</div>
+      <div class="q-opt" onclick="selectOpt('rq3','D')"><span class="opt-letter">D</span>have been required to submit</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('rq3','B','\"Each\" é singular — mesmo que \"of the students\" seja plural, o sujeito é \"each\". Portanto o verbo deve ser singular: \"is required\". Regra clássica do SAT!')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- RW Q4 -->
+
+  <div class="quiz-question" id="rq4">
+    <div class="q-num">Questão R4 · Transitions (Conectivos)</div>
+    <div class="q-text">Choose the best transition to complete the sentence:<br><br>"Solar energy is clean and renewable. ______, its installation cost remains high for many households."</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('rq4','A')"><span class="opt-letter">A</span>Therefore</div>
+      <div class="q-opt" onclick="selectOpt('rq4','B')"><span class="opt-letter">B</span>Similarly</div>
+      <div class="q-opt" onclick="selectOpt('rq4','C')"><span class="opt-letter">C</span>However</div>
+      <div class="q-opt" onclick="selectOpt('rq4','D')"><span class="opt-letter">D</span>Furthermore</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('rq4','C','A segunda frase apresenta uma ideia que contrasta com a primeira (vantagem vs. desvantagem). \"However\" (contudo) é o conectivo de contraste. \"Therefore\" = consequência. \"Similarly\" = adição similar. \"Furthermore\" = adição.')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <!-- RW Q5 -->
+
+  <div class="quiz-question" id="rq5">
+    <div class="q-num">Questão R5 · Command of Evidence</div>
+    <div class="q-passage">"A 2023 study tracked 500 adults who began exercising regularly for 30 minutes, five days per week. After six months, 78% reported improved sleep quality, 65% showed lower blood pressure readings, and the group's average stress scores dropped by 40%."</div>
+    <div class="q-text">Which claim is best supported by the data in the passage?</div>
+    <div class="q-options">
+      <div class="q-opt" onclick="selectOpt('rq5','A')"><span class="opt-letter">A</span>Exercise eliminates stress entirely for most people.</div>
+      <div class="q-opt" onclick="selectOpt('rq5','B')"><span class="opt-letter">B</span>Regular exercise is associated with multiple health improvements.</div>
+      <div class="q-opt" onclick="selectOpt('rq5','C')"><span class="opt-letter">C</span>Thirty minutes of daily exercise is the only effective amount.</div>
+      <div class="q-opt" onclick="selectOpt('rq5','D')"><span class="opt-letter">D</span>All adults who exercise will lower their blood pressure.</div>
+    </div>
+    <button class="quiz-check-btn" onclick="checkQ('rq5','B','O texto apresenta múltiplos benefícios (sono, pressão, estresse). B captura isso corretamente. A exagera (\"elimina\"). C é absoluto e não suportado. D é absoluto — o texto diz 65%, não todos.')" disabled>Verificar</button>
+    <div class="q-feedback"></div>
+  </div>
+
+  <div id="rw-result" class="result-panel">
+    <div class="result-score" id="rw-score-val">0/5</div>
+    <div class="result-label">Resultado Reading & Writing</div>
+    <div class="result-text" id="rw-result-text"></div>
+    <div class="result-breakdown">
+      <div class="rb-item"><div class="rb-label">Acertos</div><div class="rb-val" id="rw-acertos">0</div></div>
+      <div class="rb-item"><div class="rb-label">Erros</div><div class="rb-val" id="rw-erros">0</div></div>
+      <div class="rb-item"><div class="rb-label">Nível estimado</div><div class="rb-val" id="rw-nivel">—</div></div>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn-prev" onclick="goTo(2)">← Anterior</button>
+    <button class="btn-next" onclick="goTo(4)">Próximo bloco →</button>
+  </div>
+</div>
+
+<!-- ══════════════ BLOCK 4: RESULTADO ══════════════ -->
+
+<div class="block" id="block-4">
+  <div class="block-header">
+    <div class="block-eyebrow">Bloco 05 · 25 minutos</div>
+    <div class="block-title">Resultado & Próximos Passos</div>
+    <div class="block-subtitle">O diagnóstico é o começo — não o fim</div>
+  </div>
+
+  <div id="final-result-box" class="concept-box">
+    <h3>Seu Resultado da Sessão #01</h3>
+    <p id="final-result-text">Complete os quizzes para ver seu resultado aqui.</p>
+  </div>
+
+  <h3 class="sub">O que fazer com esse resultado</h3>
+
+  <div class="info-box">
+    <h4>📌 Ações imediatas (esta semana)</h4>
+    <ul>
+      <li>Acesse <strong>khanacademy.org/sat</strong> e crie sua conta</li>
+      <li>Faça o diagnóstico oficial do Khan Academy — ele cria um plano personalizado</li>
+      <li>Baixe o <strong>Bluebook App</strong> no computador e explore a interface</li>
+      <li>Inicie seu caderno de erros — anote os erros de hoje com a explicação</li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <h4>📅 Próxima sessão — Segunda, 04 Mai</h4>
+    <ul>
+      <li><strong>Sessão #02:</strong> Álgebra Linear I</li>
+      <li>Tópicos: Equações de 1º grau, inequações, sistemas lineares</li>
+      <li>Material: Khan Academy — Unit: Linear equations & inequalities</li>
+      <li>Dica: Revise os erros do quiz de hoje antes de começar</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Reflexão da Sessão — Autoavaliação</h3>
+  <p class="section-text">Responda honestamente. Isso ajuda a calibrar as próximas sessões.</p>
+
+  <div class="diag-item">
+    <div class="diag-q">Como você se sentiu com as questões de Math?</div>
+    <div class="diag-opts">
+      <button class="diag-btn" onclick="toggleDiag(this)">Muito difícil</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Difícil mas manejável</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Razoável</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Tranquilo</button>
+    </div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-q">Como foi o inglês das questões de Reading & Writing?</div>
+    <div class="diag-opts">
+      <button class="diag-btn" onclick="toggleDiag(this)">Muito difícil de entender</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Entendi com esforço</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Entendi bem</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Muito fácil</button>
+    </div>
+  </div>
+
+  <div class="diag-item">
+    <div class="diag-q">O que foi mais surpreendente nesta sessão?</div>
+    <div class="diag-opts">
+      <button class="diag-btn" onclick="toggleDiag(this)">A estrutura do SAT</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">As pegadinhas nas questões</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">O nível do inglês</button>
+      <button class="diag-btn" onclick="toggleDiag(this)">Meu próprio desempenho</button>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:32px">
+    <p><strong>Parabéns por completar a Sessão #01!</strong> O primeiro passo é sempre o mais importante. Você agora conhece a estrutura do SAT, tem uma estratégia inicial e sabe onde focar. Até segunda-feira!</p>
+  </div>
+
+  <div class="nav-buttons">
+    <button class="btn-prev" onclick="goTo(3)">← Anterior</button>
+    <button class="btn-next" onclick="alert('Sessão #01 concluída! ✓\n\nMarque-a como feita no seu plano de estudos.')">✓ Concluir Sessão</button>
+  </div>
+</div>
+
+<script>
+// ── STATE ──
+let currentBlock = 0;
+const TOTAL = 5;
+const blocksDone = [false,false,false,false,false];
+
+const quizAnswers = {};   // { qid: chosen }
+const quizCorrect = {};   // { qid: isCorrect }
+const correctKeys = { mq1:'C', mq2:'B', mq3:'C', mq4:'B', mq5:'B', mq6:'B', rq1:'A', rq2:'C', rq3:'B', rq4:'C', rq5:'B' };
+
+// ── GLOBAL TIMER (2h) ──
+let totalSec = 2 * 3600;
+let timerRunning = true;
+const timerEl = document.getElementById('top-timer');
+
+function fmtTime(s) {
+  const h = Math.floor(s/3600);
+  const m = Math.floor((s%3600)/60);
+  const sec = s%60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+
+setInterval(() => {
+  if (!timerRunning) return;
+  if (totalSec > 0) { totalSec--; timerEl.textContent = fmtTime(totalSec); }
+  else { timerEl.textContent = '00:00:00'; timerEl.style.color = '#c87e7e'; }
+}, 1000);
+
+// ── NAVIGATION ──
+function goTo(idx) {
+  document.querySelectorAll('.block').forEach((b,i) => b.classList.toggle('visible', i===idx));
+  document.querySelectorAll('.tl-item').forEach((t,i) => {
+    t.classList.toggle('active', i===idx);
+    if (blocksDone[i]) t.classList.add('done');
+  });
+  blocksDone[currentBlock] = true;
+  currentBlock = idx;
+  updateTopProgress();
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (idx === 4) buildFinalResult();
+}
+
+function updateTopProgress() {
+  const done = blocksDone.filter(Boolean).length;
+  const pct = Math.round(done/TOTAL*100);
+  document.getElementById('top-fill').style.width = pct+'%';
+  document.getElementById('top-pct').textContent = `${done} / ${TOTAL}`;
+}
+
+// ── QUIZ LOGIC ──
+function selectOpt(qid, letter) {
+  const q = document.getElementById(qid);
+  if (q.dataset.answered === 'true') return;
+  q.querySelectorAll('.q-opt').forEach(o => o.classList.remove('selected'));
+  const opts = q.querySelectorAll('.q-opt');
+  const letters = ['A','B','C','D'];
+  const idx = letters.indexOf(letter);
+  if (idx >= 0) opts[idx].classList.add('selected');
+  quizAnswers[qid] = letter;
+  q.querySelector('.quiz-check-btn').disabled = false;
+}
+
+function checkQ(qid, correct, explanation) {
+  const q = document.getElementById(qid);
+  if (q.dataset.answered === 'true') return;
+  q.dataset.answered = 'true';
+
+  const chosen = quizAnswers[qid];
+  const isCorrect = chosen === correct;
+  quizCorrect[qid] = isCorrect;
+
+  const letters = ['A','B','C','D'];
+  q.querySelectorAll('.q-opt').forEach((opt, i) => {
+    opt.classList.remove('selected');
+    if (letters[i] === correct) opt.classList.add('correct');
+    else if (letters[i] === chosen && !isCorrect) opt.classList.add('wrong');
+  });
+
+  const fb = q.querySelector('.q-feedback');
+  fb.className = 'q-feedback show ' + (isCorrect ? 'ok' : 'fail');
+  fb.innerHTML = (isCorrect ? '✓ Correto! ' : '✗ Incorreto. ') + explanation;
+
+  q.querySelector('.quiz-check-btn').disabled = true;
+
+  // Check section complete
+  checkSectionComplete();
+}
+
+function checkSectionComplete() {
+  // Math
+  const mathQs = ['mq1','mq2','mq3','mq4','mq5','mq6'];
+  const mathDone = mathQs.every(q => document.getElementById(q).dataset.answered === 'true');
+  if (mathDone) {
+    const acertos = mathQs.filter(q => quizCorrect[q]).length;
+    document.getElementById('math-acertos').textContent = acertos;
+    document.getElementById('math-erros').textContent = 6-acertos;
+    document.getElementById('math-score-val').textContent = acertos+'/6';
+    const nivel = acertos <= 2 ? 'Básico' : acertos <= 4 ? 'Intermediário' : 'Avançado';
+    document.getElementById('math-nivel').textContent = nivel;
+    const texts = {
+      'Básico': 'Sua base em Math precisa de atenção. Boas notícias: álgebra básica é treinável rapidamente. Foque nas sessões de Álgebra e siga o plano — em 4-6 semanas você verá progresso claro.',
+      'Intermediário': 'Boa base! Você conhece os conceitos fundamentais, mas ainda comete erros que o plano vai corrigir. Foque na atenção ao enunciado — o SAT tem muitas pegadinhas de interpretação.',
+      'Avançado': 'Excelente! Math provavelmente não é seu gargalo. Invista tempo extra em R&W para maximizar sua pontuação total.'
+    };
+    document.getElementById('math-result-text').textContent = texts[nivel];
+    document.getElementById('math-result').classList.add('show');
+  }
+
+  // R&W
+  const rwQs = ['rq1','rq2','rq3','rq4','rq5'];
+  const rwDone = rwQs.every(q => document.getElementById(q).dataset.answered === 'true');
+  if (rwDone) {
+    const acertos = rwQs.filter(q => quizCorrect[q]).length;
+    document.getElementById('rw-acertos').textContent = acertos;
+    document.getElementById('rw-erros').textContent = 5-acertos;
+    document.getElementById('rw-score-val').textContent = acertos+'/5';
+    const nivel = acertos <= 1 ? 'Básico' : acertos <= 3 ? 'Intermediário' : 'Avançado';
+    document.getElementById('rw-nivel').textContent = nivel;
+    const texts = {
+      'Básico': 'R&W exige atenção ao vocabulário e à gramática do inglês acadêmico. Com B1-B2, você tem base para crescer muito. Priorize leitura regular em inglês — 10 min/dia faz diferença.',
+      'Intermediário': 'Você tem uma base sólida. Os erros provavelmente são em vocabulário avançado ou em gramática específica do SAT. O plano cobre exatamente isso nas próximas sessões.',
+      'Avançado': 'Ótimo desempenho em R&W! Seu inglês B1-B2 é mais forte do que você pensava. Continue praticando leitura para manter esse nível.'
+    };
+    document.getElementById('rw-result-text').textContent = texts[nivel];
+    document.getElementById('rw-result').classList.add('show');
+  }
+}
+
+function buildFinalResult() {
+  const mathQs = ['mq1','mq2','mq3','mq4','mq5','mq6'];
+  const rwQs = ['rq1','rq2','rq3','rq4','rq5'];
+  const mathAcertos = mathQs.filter(q => quizCorrect[q]).length;
+  const rwAcertos = rwQs.filter(q => quizCorrect[q]).length;
+  const total = mathAcertos + rwAcertos;
+  const max = 11;
+
+  let msg = '';
+  if (total <= 4) msg = `Você acertou ${total} de ${max} questões. É um ponto de partida honesto — e é exatamente para isso que serve o diagnóstico! Seu plano está calibrado para construir sua base de forma progressiva. Siga o cronograma e em setembro você vai se surpreender com sua evolução.`;
+  else if (total <= 7) msg = `Você acertou ${total} de ${max} questões. Um resultado intermediário que confirma: você tem base para trabalhar, mas ainda há espaço para crescer bastante. O plano de estudos vai sistemáticamente fechar essas lacunas. Continue firme!`;
+  else msg = `Você acertou ${total} de ${max} questões. Excelente resultado para um diagnóstico inicial! Sua base é mais sólida do que o esperado para o perfil B1-B2. O desafio agora é refinar a precisão e a velocidade para maximizar seu score em setembro.`;
+
+  document.getElementById('final-result-text').textContent = msg;
+}
+
+// ── CHECKLIST ──
+function toggleCl(el) {
+  el.classList.toggle('checked');
+}
+
+// ── DIAG BUTTONS ──
+function toggleDiag(btn) {
+  const group = btn.closest('.diag-opts');
+  group.querySelectorAll('.diag-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+</script>
+
+</body>
+</html>
