@@ -1,1031 +1,1923 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0a0a0a">
-<title>Plano de Estudos SAT 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<title>SAT – Plano 60 Dias</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0a;
-  --surface: #111111;
-  --surface2: #161616;
-  --surface3: #1c1c1c;
-  --border: #222222;
-  --border2: #2a2a2a;
-  --accent: #c8a96e;
-  --accent-dim: rgba(200,169,110,0.12);
-  --text: #f0e8dc;
-  --muted: #6b6560;
-  --muted2: #4a4540;
-
-–phase1: #c8a96e;
-–phase2: #6eb8a0;
-–phase3: #6e8fc8;
-–phase4: #b86e9e;
-
-–phase1-dim: rgba(200,169,110,0.1);
-–phase2-dim: rgba(110,184,160,0.1);
-–phase3-dim: rgba(110,143,200,0.1);
-–phase4-dim: rgba(184,110,158,0.1);
+  --bg: #0e0e0e;
+  --s1: #161616;
+  --s2: #1d1d1d;
+  --s3: #242424;
+  --border: #2e2e2e;
+  --border2: #3a3a3a;
+  --text: #e8e3dc;
+  --text2: #a09890;
+  --text3: #6a6260;
+  --math: #e8a838;
+  --rw: #4eada0;
+  --strat: #9b7fd4;
+  --sim: #d45f5f;
+  --math-bg: rgba(232,168,56,0.08);
+  --rw-bg: rgba(78,173,160,0.08);
+  --strat-bg: rgba(155,127,212,0.08);
+  --sim-bg: rgba(212,95,95,0.08);
 }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-scroll-behavior: smooth;
-color-scheme: dark;
-background: #0a0a0a;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-background: #0a0a0a;
-background: var(–bg);
-color: #f0e8dc;
-color: var(–text);
-font-family: ‘Lora’, serif;
-letter-spacing: 0.2px;
-min-height: 100vh;
-overflow-x: hidden;
--webkit-text-size-adjust: 100%;
-}
-
-/* ── NOISE OVERLAY ── */
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
-pointer-events: none;
-z-index: 0;
-opacity: 0.4;
-}
-
-/* ── HEADER ── */
-.site-header {
-position: relative;
-z-index: 10;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 22px 48px;
-border-bottom: 1px solid var(–border);
-background: rgba(10,10,10,0.85);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-position: sticky;
-top: 0;
-}
-
-.logo {
-font-family: ‘Playfair Display’, serif;
-font-size: 16px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–accent);
-}
-
-.logo span {
-color: var(–text);
-font-style: italic;
-}
-
-.header-nav {
-display: flex;
-gap: 28px;
-align-items: center;
-}
-
-.header-nav a {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 2.5px;
-text-transform: uppercase;
-text-decoration: none;
-color: var(–muted);
-transition: color 0.25s;
-}
-
-.header-nav a:hover { color: var(–accent); }
-
-/* ── HERO ── */
-.hero {
-position: relative;
-padding: 90px 48px 70px;
-border-bottom: 1px solid var(–border);
-overflow: hidden;
-}
-
-.hero::after {
-content: ‘SAT’;
-position: absolute;
-right: -20px;
-top: 50%;
-transform: translateY(-50%);
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(120px, 18vw, 240px);
-font-weight: 900;
-color: rgba(200,169,110,0.04);
-pointer-events: none;
-line-height: 1;
-letter-spacing: -8px;
-user-select: none;
-}
-
-.hero-tag {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.hero-tag::before {
-content: ‘’;
-display: block;
-width: 24px;
-height: 1px;
-background: var(–accent);
-}
-
-.hero h1 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(38px, 6vw, 80px);
-font-weight: 900;
-line-height: 1.05;
-letter-spacing: -2px;
-max-width: 700px;
-}
-
-.hero h1 em {
-font-style: italic;
-color: var(–accent);
-}
-
-.hero-sub {
-margin-top: 18px;
-color: var(–muted);
-font-size: 14px;
-max-width: 460px;
-line-height: 1.7;
-}
-
-.hero-meta {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-margin-top: 36px;
-}
-
-.meta-pill {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-padding: 7px 14px;
-border: 1px solid var(–border2);
-color: var(–muted);
-border-radius: 2px;
-display: flex;
-align-items: center;
-gap: 7px;
-transition: 0.25s;
-}
-
-.meta-pill i { color: var(–accent); font-size: 12px; }
-.meta-pill strong { color: var(–text); }
-.meta-pill:hover { border-color: var(–accent); color: var(–text); }
-
-/* ── CONTROLS ── */
-.controls-bar {
-position: sticky;
-top: 65px;
-z-index: 9;
-background: rgba(10,10,10,0.9);
-backdrop-filter: blur(10px);
--webkit-backdrop-filter: blur(10px);
-border-bottom: 1px solid var(–border);
-padding: 14px 48px;
-display: flex;
-align-items: center;
-gap: 8px;
-flex-wrap: wrap;
-}
-
-.filter-label {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–muted2);
-margin-right: 4px;
-}
-
-.filter-btn {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-padding: 6px 13px;
-border: 1px solid var(–border2);
-background: none;
-color: var(–muted);
-cursor: pointer;
-border-radius: 2px;
-transition: 0.2s;
-display: flex;
-align-items: center;
-gap: 5px;
-}
-
-.filter-btn:hover { border-color: var(–accent); color: var(–accent); }
-.filter-btn.active { border-color: var(–accent); color: var(–accent); background: var(–accent-dim); }
-
-.filter-btn i { font-size: 11px; }
-
-.pending-btn {
-margin-left: auto;
-border-color: var(–border2);
-}
-
-/* ── PROGRESS ── */
-.progress-wrap {
-padding: 20px 48px;
-display: flex;
-align-items: center;
-gap: 16px;
-border-bottom: 1px solid var(–border);
-}
-
-.progress-label {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–muted);
-white-space: nowrap;
-}
-
-.progress-track {
-flex: 1;
-height: 3px;
-background: var(–border2);
-border-radius: 2px;
-overflow: hidden;
-}
-
-.progress-fill {
-height: 100%;
-border-radius: 2px;
-background: linear-gradient(90deg, var(–phase1), var(–phase2), var(–phase3), var(–phase4));
-transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.progress-pct {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-color: var(–accent);
-white-space: nowrap;
-}
-
-/* ── LEGEND ── */
-.legend {
-padding: 18px 48px;
-display: flex;
-gap: 24px;
-flex-wrap: wrap;
-border-bottom: 1px solid var(–border);
-}
-
-.legend-item {
-display: flex;
-align-items: center;
-gap: 8px;
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–muted);
-}
-
-.legend-dot {
-width: 6px;
-height: 6px;
-border-radius: 50%;
-}
-
-/* ── MAIN CONTENT ── */
-.main-content {
-padding: 48px;
-}
-
-/* ── PHASE SECTION ── */
-.phase-section {
-margin-bottom: 64px;
-animation: fadeUp 0.5s ease both;
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.phase-header {
-display: flex;
-align-items: baseline;
-gap: 16px;
-margin-bottom: 24px;
-padding-bottom: 14px;
-border-bottom: 1px solid var(–border);
-}
-
-.phase-num {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–muted2);
-}
-
-.phase-title {
-font-family: ‘Playfair Display’, serif;
-font-size: 22px;
-font-weight: 700;
-letter-spacing: -0.5px;
-}
-
-.phase-range {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-color: var(–muted);
-margin-left: auto;
-}
-
-/* ── SESSION GRID ── */
-.sessions-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-gap: 12px;
-}
-
-/* ── SESSION CARD ── */
-.session-card {
-position: relative;
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 4px;
-padding: 18px;
-cursor: pointer;
-transition: border-color 0.25s, transform 0.25s, background 0.25s;
-overflow: hidden;
-}
-
-.session-card::before {
-content: ‘’;
-position: absolute;
-top: 0;
-left: 0;
-width: 3px;
-height: 100%;
-opacity: 0;
-transition: opacity 0.25s;
-}
-
-.session-card.phase-1::before { background: var(–phase1); }
-.session-card.phase-2::before { background: var(–phase2); }
-.session-card.phase-3::before { background: var(–phase3); }
-.session-card.phase-4::before { background: var(–phase4); }
-
-.session-card:hover {
-transform: translateY(-3px);
-background: var(–surface2);
-}
-
-.session-card:hover::before { opacity: 1; }
-
-.session-card.phase-1:hover { border-color: rgba(200,169,110,0.4); }
-.session-card.phase-2:hover { border-color: rgba(110,184,160,0.4); }
-.session-card.phase-3:hover { border-color: rgba(110,143,200,0.4); }
-.session-card.phase-4:hover { border-color: rgba(184,110,158,0.4); }
-
-.session-card.done {
-opacity: 0.5;
-background: var(–surface);
-}
-
-.session-card.done .session-title {
-text-decoration: line-through;
-text-decoration-color: var(–muted2);
-}
-
-/* Card top row */
-.session-top {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-margin-bottom: 12px;
-}
-
-.session-date {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–muted);
-}
-
-.session-num {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-color: var(–muted2);
-margin-top: 3px;
-}
-
-.session-type {
-font-family: ‘DM Mono’, monospace;
-font-size: 8px;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-padding: 4px 9px;
-border-radius: 2px;
-display: flex;
-align-items: center;
-gap: 5px;
-}
-
-.session-type i { font-size: 10px; }
-
-.type-math    { color: var(–phase1); background: var(–phase1-dim); }
-.type-reading { color: var(–phase2); background: var(–phase2-dim); }
-.type-mixed   { color: var(–phase3); background: var(–phase3-dim); }
-.type-simulado{ color: var(–phase4); background: var(–phase4-dim); }
-
-/* Card body */
-.session-title {
-font-family: ‘Playfair Display’, serif;
-font-size: 15px;
-font-weight: 600;
-line-height: 1.35;
-margin-bottom: 10px;
-letter-spacing: -0.2px;
-}
-
-.session-topics {
-display: flex;
-flex-direction: column;
-gap: 4px;
-margin-bottom: 14px;
-}
-
-.session-topics span {
-font-size: 11px;
-color: var(–muted);
-display: flex;
-align-items: center;
-gap: 6px;
-}
-
-.session-topics span::before {
-content: ‘’;
-width: 3px;
-height: 3px;
-border-radius: 50%;
-background: var(–muted2);
-flex-shrink: 0;
-}
-
-/* Check button */
-.check-btn {
-display: flex;
-align-items: center;
-gap: 6px;
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-text-transform: uppercase;
-border: 1px solid var(–border2);
-background: none;
-color: var(–muted);
-border-radius: 2px;
-padding: 5px 10px;
-cursor: pointer;
-transition: 0.2s;
-width: 100%;
-justify-content: center;
-}
-
-.check-btn i { font-size: 11px; }
-.check-btn:hover { border-color: var(–accent); color: var(–accent); }
-.session-card.done .check-btn { border-color: var(–phase2); color: var(–phase2); }
-
-/* ── TIPS SECTION ── */
-.tips-section {
-padding: 0 48px 72px;
-}
-
-.tips-header {
-display: flex;
-align-items: baseline;
-gap: 16px;
-margin-bottom: 28px;
-padding-bottom: 14px;
-border-bottom: 1px solid var(–border);
-}
-
-.tips-header-label {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–muted2);
-}
-
-.tips-header h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: 22px;
-font-weight: 700;
-letter-spacing: -0.5px;
-color: var(–text);
-}
-
-.tips-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-gap: 12px;
-}
-
-.tip-card {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 4px;
-padding: 20px;
-transition: 0.25s;
-}
-
-.tip-card:hover {
-border-color: var(–border2);
-background: var(–surface2);
-transform: translateY(-2px);
-}
-
-.tip-icon {
-font-size: 20px;
-margin-bottom: 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-width: 38px;
-height: 38px;
-background: var(–surface3);
-border-radius: 4px;
-border: 1px solid var(–border2);
-color: var(–accent);
-}
-
-.tip-icon i { font-size: 16px; }
-
-.tip-title {
-font-family: ‘Playfair Display’, serif;
-font-size: 14px;
-font-weight: 600;
-margin-bottom: 8px;
-letter-spacing: -0.2px;
-}
-
-.tip-text {
-font-size: 12px;
-color: var(–muted);
-line-height: 1.65;
-}
-
-/* ── FOOTER ── */
-.site-footer {
-border-top: 1px solid var(–border);
-padding: 24px 48px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 12px;
-}
-
-.footer-logo {
-font-family: ‘Playfair Display’, serif;
-font-size: 13px;
-letter-spacing: 2px;
-color: var(–accent);
-text-transform: uppercase;
-}
-
-.footer-copy {
-font-family: ‘DM Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-color: var(–muted2);
-text-transform: uppercase;
-}
-
-/* ── RESPONSIVE ── */
-
-/* Tablet */
-@media (max-width: 900px) {
-.site-header,
-.controls-bar,
-.progress-wrap,
-.legend,
-.main-content,
-.tips-section,
-.site-footer { padding-left: 24px; padding-right: 24px; }
-
-.hero { padding: 70px 24px 55px; }
-.sessions-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-.tips-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-/* Global padding */
-.site-header,
-.controls-bar,
-.progress-wrap,
-.legend,
-.main-content,
-.tips-section,
-.site-footer { padding-left: 16px; padding-right: 16px; }
-
-/* Header */
-.site-header { padding-top: 14px; padding-bottom: 14px; }
-.logo { font-size: 13px; }
-.header-nav a { font-size: 9px; letter-spacing: 1.5px; }
-.header-nav { gap: 16px; }
-
-/* Hero */
-.hero { padding: 48px 16px 40px; }
-.hero::after { display: none; }
-.hero h1 { font-size: 30px; letter-spacing: -0.8px; }
-.hero-sub { font-size: 13px; margin-top: 12px; }
-.hero-tag { font-size: 9px; margin-bottom: 14px; }
-
-.hero-meta { gap: 8px; margin-top: 24px; }
-.meta-pill { font-size: 9px; padding: 6px 10px; gap: 5px; }
-
-/* Legend: wrap into 2 columns */
-.legend { gap: 10px 18px; padding-top: 14px; padding-bottom: 14px; }
-.legend-item { font-size: 8px; }
-
-/* Controls bar */
-.controls-bar {
-top: 53px;
-gap: 6px;
-padding-top: 10px;
-padding-bottom: 10px;
-overflow-x: auto;
-flex-wrap: nowrap;
--webkit-overflow-scrolling: touch;
-scrollbar-width: none;
-}
-.controls-bar::-webkit-scrollbar { display: none; }
-.filter-label { display: none; }
-.filter-btn { font-size: 9px; padding: 5px 10px; white-space: nowrap; flex-shrink: 0; }
-.pending-btn { margin-left: 0; }
-
-/* Progress */
-.progress-wrap { gap: 10px; padding-top: 12px; padding-bottom: 12px; }
-.progress-label { font-size: 8px; letter-spacing: 2px; }
-.progress-pct { font-size: 9px; }
-
-/* Phase sections */
-.main-content { padding-top: 28px; padding-bottom: 28px; }
-.phase-section { margin-bottom: 40px; }
-.phase-header { gap: 10px; margin-bottom: 16px; padding-bottom: 10px; }
-.phase-num { font-size: 8px; }
-.phase-title { font-size: 18px; }
-.phase-range { display: none; }
-
-/* Cards: single column */
-.sessions-grid { grid-template-columns: 1fr; gap: 10px; }
-
-.session-card { padding: 14px; }
-.session-date { font-size: 8px; letter-spacing: 1.5px; }
-.session-num  { font-size: 8px; }
-.session-type { font-size: 7px; padding: 3px 7px; }
-.session-title { font-size: 14px; margin-bottom: 8px; }
-.session-topics span { font-size: 10px; }
-.check-btn { font-size: 8px; padding: 5px 8px; }
-
-/* Tips */
-.tips-section { padding-bottom: 48px; }
-.tips-header h2 { font-size: 18px; }
-.tips-grid { grid-template-columns: 1fr; gap: 10px; }
-.tip-card { padding: 16px; }
-.tip-title { font-size: 13px; }
-.tip-text { font-size: 11px; }
-
-/* Footer */
-.site-footer { padding-top: 18px; padding-bottom: 18px; }
-.footer-logo { font-size: 11px; }
-.footer-copy { font-size: 8px; }
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Instrument Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* STICKY TOP */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 48px;
+  padding: 0 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.top-nav::-webkit-scrollbar { display: none; }
+
+.top-tab {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text3);
+  cursor: pointer;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  transition: all .15s;
+  user-select: none;
+}
+
+.top-tab:first-child { border-left: 1px solid var(--border); }
+.top-tab:hover { color: var(--text2); background: var(--s1); }
+.top-tab.active { color: var(--text); background: var(--s2); }
+.top-tab .dot { width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+
+.progress-row {
+  height: 3px;
+  background: var(--s3);
+  position: relative;
+}
+
+.progress-fill-main {
+  height: 100%;
+  background: linear-gradient(90deg, var(--math), var(--rw), var(--strat));
+  transition: width .4s;
+}
+
+/* HEADER */
+header {
+  padding: 52px 48px 44px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+}
+
+.header-left .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+
+header h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text2);
+}
+
+.header-desc {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+.header-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 180px;
+}
+
+.stat-box {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 18px;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stat-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+/* LEGEND */
+.legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 48px;
+  border-bottom: 1px solid var(--border);
+  background: var(--s1);
+  flex-wrap: wrap;
+}
+
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.leg-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+/* FILTERS */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 16px 48px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.fl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text3); letter-spacing: 2px; margin-right: 4px; }
+
+.fbtn {
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text3);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .15s;
+  text-transform: uppercase;
+}
+
+.fbtn:hover { border-color: var(--border2); color: var(--text2); }
+.fbtn.on { background: var(--s3); color: var(--text); border-color: var(--border2); }
+
+/* MAIN PANELS */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── WEEK GRID ── */
+.weeks-wrap { padding: 40px 48px 60px; }
+
+.week-block {
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.week-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.week-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.week-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.week-subtitle {
+  font-size: 13px;
+  color: var(--text3);
+  margin-left: auto;
+  font-style: italic;
+}
+
+.week-toggle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text3);
+  transition: transform .2s;
+}
+
+.week-block.open .week-toggle { transform: rotate(180deg); }
+
+.week-body { display: none; }
+.week-block.open .week-body { display: block; }
+
+.sessions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.session-col {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+}
+
+.session-col:last-child { border-right: none; }
+
+.sc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sc-day-badge {
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 10px;
+}
+
+.badge-dom { background: rgba(78,173,160,0.15); color: var(--rw); }
+.badge-seg { background: rgba(232,168,56,0.15); color: var(--math); }
+
+/* SESSION CARD inside column */
+.sess {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  position: relative;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+
+.sess:hover { background: var(--s3); }
+.sess.done { opacity: 0.45; }
+.sess.done .sess-title { text-decoration: line-through; text-decoration-color: var(--text3); }
+
+.sess.type-math { border-left-color: var(--math); }
+.sess.type-rw   { border-left-color: var(--rw); }
+.sess.type-strat { border-left-color: var(--strat); }
+.sess.type-sim  { border-left-color: var(--sim); }
+
+.sess-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+
+.type-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.tt-math  { background: var(--math-bg);  color: var(--math); }
+.tt-rw    { background: var(--rw-bg);    color: var(--rw); }
+.tt-strat { background: var(--strat-bg); color: var(--strat); }
+.tt-sim   { background: var(--sim-bg);   color: var(--sim); }
+
+.sess-check {
+  width: 20px; height: 20px;
+  border: 1px solid var(--border2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  color: transparent;
+  flex-shrink: 0;
+  transition: all .15s;
+  cursor: pointer;
+}
+
+.sess.done .sess-check { background: var(--rw); border-color: var(--rw); color: #0e0e0e; }
+
+.sess-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.sess-topics {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.7;
+}
+
+.sess-topics .t-item::before { content: '· '; }
+
+.sess-expand { display: none; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+.sess.expanded .sess-expand { display: block; }
+
+.expand-section { margin-bottom: 12px; }
+.expand-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.expand-content {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.expand-content ul { padding-left: 14px; }
+.expand-content li { margin-bottom: 3px; }
+
+.expand-resource {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--s3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text2);
+  margin: 3px 3px 3px 0;
+}
+
+.tip-box {
+  background: var(--s1);
+  border-left: 2px solid var(--strat);
+  padding: 10px 14px;
+  border-radius: 0 4px 4px 0;
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* WEEK FOOTER */
+.week-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--s1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wf-prog-track {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.wf-prog-fill {
+  height: 100%;
+  background: var(--rw);
+  border-radius: 2px;
+  transition: width .3s;
+}
+
+.wf-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  white-space: nowrap;
+}
+
+/* ── REFERENCE PANEL ── */
+.ref-wrap { padding: 40px 48px 60px; }
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.ref-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ref-card-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ref-card-icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.ref-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ref-card-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  margin-left: auto;
+  letter-spacing: 1px;
+}
+
+.ref-card-body { padding: 16px 18px; }
+
+.ref-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.ref-item:last-child { border-bottom: none; }
+.ref-item:hover .ref-item-title { color: var(--text); }
+
+.ref-item-idx {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  min-width: 24px;
+  padding-top: 1px;
+}
+
+.ref-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text2);
+  transition: color .15s;
+  margin-bottom: 2px;
+}
+
+.ref-item-desc {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.5;
+}
+
+.ref-item-check {
+  margin-left: auto;
+  width: 18px; height: 18px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px;
+  color: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.ref-item.checked .ref-item-check { background: var(--rw); border-color: var(--rw); color: #0e0e0e; }
+.ref-item.checked .ref-item-title { text-decoration: line-through; color: var(--text3); }
+
+/* VOCAB TABLE */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.vocab-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.vocab-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: top;
+}
+
+.vocab-table td:first-child { color: var(--text); font-weight: 600; }
+.vocab-table tr:last-child td { border-bottom: none; }
+.vocab-table tr:hover td { background: var(--s2); }
+
+/* FORMULA GRID */
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.formula-card {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.formula-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.formula-eq {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  color: var(--math);
+  margin-bottom: 4px;
+}
+
+.formula-note { font-size: 12px; color: var(--text3); line-height: 1.5; }
+
+/* GRAMMAR RULES */
+.grammar-list { margin-top: 8px; }
+
+.grammar-item {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.grammar-rule {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.grammar-ex {
+  font-size: 12px;
+  color: var(--text3);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.grammar-ex span { color: var(--rw); font-style: normal; }
+
+/* ── STRATEGY PANEL ── */
+.strat-wrap { padding: 40px 48px 60px; }
+
+.strat-section { margin-bottom: 40px; }
+
+.strat-h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.strat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.strat-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px;
+}
+
+.strat-card-num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--border2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.strat-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.strat-card-text { font-size: 13px; color: var(--text3); line-height: 1.65; }
+
+.timing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.timing-card {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.timing-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.timing-val {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.timing-note { font-size: 12px; color: var(--text3); }
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  header { grid-template-columns: 1fr; padding: 32px 24px 28px; }
+  .header-stats { flex-direction: row; flex-wrap: wrap; }
+  .weeks-wrap, .ref-wrap, .strat-wrap { padding: 24px 20px 40px; }
+  .legend-bar, .filter-bar { padding-left: 20px; padding-right: 20px; }
+  .sessions-row { grid-template-columns: 1fr; }
+  .session-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .session-col:last-child { border-bottom: none; }
 }
 </style>
-
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<!-- STICKY NAV -->
+<div class="sticky-top">
+  <div class="top-nav">
+    <div class="top-tab active" onclick="showPanel('weeks')"><span class="dot" style="background:var(--rw)"></span>PLANO 60 DIAS</div>
+    <div class="top-tab" onclick="showPanel('math-ref')"><span class="dot" style="background:var(--math)"></span>MATH – REFERÊNCIA</div>
+    <div class="top-tab" onclick="showPanel('rw-ref')"><span class="dot" style="background:var(--rw)"></span>READING & WRITING</div>
+    <div class="top-tab" onclick="showPanel('strategy')"><span class="dot" style="background:var(--strat)"></span>ESTRATÉGIA</div>
+  </div>
+  <div class="progress-row">
+    <div class="progress-fill-main" id="main-progress" style="width:0%"></div>
+  </div>
+</div>
 
-<header class="site-header">
-  <div class="logo">Study<span>SAT</span></div>
-  <nav class="header-nav">
-    <a href="index.html"><i class="bi bi-house"></i> Início</a>
-    <a href="day1.html"><i class="bi bi-info-circle"></i> Sobre</a>
-  </nav>
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="eyebrow">▸ SAT Prep · Perfil B1-B2 · Math Média</div>
+    <h1>Plano <em>completo</em><br>60 dias</h1>
+    <p class="header-desc">Cada sessão tem conteúdo real, tópicos que caem no SAT, recursos indicados e dicas de estratégia. Clique em qualquer sessão para expandir o material detalhado.</p>
+  </div>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-label">Total de sessões</div>
+      <div class="stat-val">17</div>
+      <div class="stat-sub">dom + seg × 8,5 semanas</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Progresso</div>
+      <div class="stat-val" id="main-pct-display">0%</div>
+      <div class="stat-sub" id="main-count-display">0 / 17 concluídas</div>
+    </div>
+  </div>
 </header>
 
-<!-- ── HERO ── -->
-
-<section class="hero">
-  <div class="hero-tag">Plano de Estudos Personalizado</div>
-  <h1>Preparação para o <em>SAT</em><br>2026</h1>
-  <p class="hero-sub">Um roteiro completo de 4 fases — dos fundamentos à prática intensiva — para você conquistar a pontuação que merece.</p>
-  <div class="hero-meta">
-    <div class="meta-pill"><i class="bi bi-calendar-event"></i> Início: <strong>03 Mai 2026</strong></div>
-    <div class="meta-pill"><i class="bi bi-flag"></i> Meta: <strong>Setembro 2026</strong></div>
-    <div class="meta-pill"><i class="bi bi-calendar-week"></i> Dias: <strong>Dom + Seg</strong></div>
-    <div class="meta-pill"><i class="bi bi-journals"></i> Total: <strong id="total-sessions">-- sessões</strong></div>
-  </div>
-</section>
-
-<!-- ── LEGEND ── -->
-
-<div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:var(--phase1)"></div> Fase 1 – Fundamentos</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--phase2)"></div> Fase 2 – Aprofundamento</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--phase3)"></div> Fase 3 – Prática Intensiva</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--phase4)"></div> Fase 4 – Simulados & Revisão</div>
+<!-- LEGEND -->
+<div class="legend-bar">
+  <div class="leg"><div class="leg-dot" style="background:var(--math)"></div>Matemática</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--rw)"></div>Reading & Writing</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--strat)"></div>Misto / Estratégia</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--sim)"></div>Simulado</div>
 </div>
 
-<!-- ── CONTROLS ── -->
-
-<div class="controls-bar">
-  <span class="filter-label">Filtrar</span>
-  <button class="filter-btn active" onclick="filterSessions('all', this)"><i class="bi bi-grid-3x3-gap"></i> Todas</button>
-  <button class="filter-btn" onclick="filterSessions('math', this)"><i class="bi bi-calculator"></i> Matemática</button>
-  <button class="filter-btn" onclick="filterSessions('reading', this)"><i class="bi bi-book"></i> Reading</button>
-  <button class="filter-btn" onclick="filterSessions('mixed', this)"><i class="bi bi-layers"></i> Misto</button>
-  <button class="filter-btn" onclick="filterSessions('simulado', this)"><i class="bi bi-clipboard-check"></i> Simulados</button>
-  <button class="filter-btn pending-btn" onclick="filterSessions('pending', this)"><i class="bi bi-hourglass-split"></i> Pendentes</button>
+<!-- FILTERS -->
+<div class="filter-bar">
+  <span class="fl">VER:</span>
+  <button class="fbtn on" onclick="setFilter('all',this)">Todas</button>
+  <button class="fbtn" onclick="setFilter('math',this)">Math</button>
+  <button class="fbtn" onclick="setFilter('rw',this)">R&W</button>
+  <button class="fbtn" onclick="setFilter('strat',this)">Misto</button>
+  <button class="fbtn" onclick="setFilter('sim',this)">Simulados</button>
+  <button class="fbtn" onclick="setFilter('pending',this)" style="margin-left:auto">Pendentes</button>
 </div>
 
-<!-- ── PROGRESS ── -->
-
-<div class="progress-wrap">
-  <span class="progress-label"><i class="bi bi-bar-chart-fill" style="color:var(--accent);margin-right:6px"></i>Progresso</span>
-  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-  <span class="progress-pct" id="progress-pct">0 / 0</span>
+<!-- ══════════ PANEL: PLANO ══════════ -->
+<div class="panel active" id="panel-weeks">
+<div class="weeks-wrap" id="weeks-container"></div>
 </div>
 
-<!-- ── SESSION CARDS ── -->
+<!-- ══════════ PANEL: MATH REF ══════════ -->
+<div class="panel" id="panel-math-ref">
+<div class="ref-wrap">
 
-<div class="main-content" id="sessions-container"></div>
-
-<!-- ── TIPS ── -->
-
-<section class="tips-section">
-  <div class="tips-header">
-    <span class="tips-header-label">Referências</span>
-    <h2>Dicas Essenciais para o SAT</h2>
+  <div style="margin-bottom:32px">
+    <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;margin-bottom:8px">Matemática — <span style="color:var(--math)">Referência Completa</span></div>
+    <div style="font-size:14px;color:var(--text3)">Todos os tópicos que caem no SAT Math, com fórmulas, exemplos e dicas. Marque o que já domina.</div>
   </div>
-  <div class="tips-grid">
-    <div class="tip-card">
-      <div class="tip-icon"><i class="bi bi-mortarboard-fill"></i></div>
-      <div class="tip-title">Material Oficial</div>
-      <div class="tip-text">Use o Khan Academy SAT (gratuito e oficial). Faça os testes diagnósticos para personalizar ainda mais seu plano de estudos.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon"><i class="bi bi-arrow-repeat"></i></div>
-      <div class="tip-title">Revisão Espaçada</div>
-      <div class="tip-text">Revise erros da sessão anterior antes de começar uma nova. O cérebro consolida memória com repetição espaçada.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon"><i class="bi bi-stopwatch-fill"></i></div>
-      <div class="tip-title">Sessões Cronometradas</div>
-      <div class="tip-text">Desde o início, pratique com tempo. O SAT Digital é 2h 14min. Treinar com pressão de tempo é fundamental.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon"><i class="bi bi-graph-up-arrow"></i></div>
-      <div class="tip-title">Analise seus Erros</div>
-      <div class="tip-text">Mantenha um caderno de erros. Categorize por tipo (conceito, distração, tempo). Isso revela padrões e direciona revisões.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon"><i class="bi bi-laptop-fill"></i></div>
-      <div class="tip-title">SAT Digital</div>
-      <div class="tip-text">O SAT atual é totalmente digital (Bluebook App). Pratique na plataforma oficial para se familiarizar com a interface.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-      <div class="tip-title">Consistência > Intensidade</div>
-      <div class="tip-text">Duas sessões focadas por semana valem mais que uma maratona mensal. Mantenha a consistência e respeite o plano.</div>
+
+  <!-- FÓRMULAS ESSENCIAIS -->
+  <div style="margin-bottom:36px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">Fórmulas Essenciais</div>
+    <div class="formula-grid">
+      <div class="formula-card"><div class="formula-name">Linha Reta</div><div class="formula-eq">y = mx + b</div><div class="formula-note">m = inclinação, b = intercepto y</div></div>
+      <div class="formula-card"><div class="formula-name">Inclinação</div><div class="formula-eq">m = (y₂−y₁)/(x₂−x₁)</div><div class="formula-note">Entre dois pontos</div></div>
+      <div class="formula-card"><div class="formula-name">Fórmula Quadrática</div><div class="formula-eq">x = (−b ± √(b²−4ac)) / 2a</div><div class="formula-note">ax² + bx + c = 0</div></div>
+      <div class="formula-card"><div class="formula-name">Discriminante</div><div class="formula-eq">Δ = b² − 4ac</div><div class="formula-note">Δ>0 duas raízes | Δ=0 uma | Δ<0 nenhuma</div></div>
+      <div class="formula-card"><div class="formula-name">Vértice da Parábola</div><div class="formula-eq">x = −b / 2a</div><div class="formula-note">Forma vertex: a(x−h)² + k</div></div>
+      <div class="formula-card"><div class="formula-name">Distância</div><div class="formula-eq">d = √((x₂−x₁)² + (y₂−y₁)²)</div><div class="formula-note">Entre dois pontos</div></div>
+      <div class="formula-card"><div class="formula-name">Ponto Médio</div><div class="formula-eq">M = ((x₁+x₂)/2, (y₁+y₂)/2)</div><div class="formula-note">Média das coordenadas</div></div>
+      <div class="formula-card"><div class="formula-name">Círculo</div><div class="formula-eq">(x−h)² + (y−k)² = r²</div><div class="formula-note">Centro (h,k), raio r</div></div>
+      <div class="formula-card"><div class="formula-name">Área – Triângulo</div><div class="formula-eq">A = (base × altura) / 2</div><div class="formula-note">Qualquer triângulo</div></div>
+      <div class="formula-card"><div class="formula-name">Pitágoras</div><div class="formula-eq">a² + b² = c²</div><div class="formula-note">c = hipotenusa</div></div>
+      <div class="formula-card"><div class="formula-name">Triângulos Especiais</div><div class="formula-eq">30-60-90: 1 : √3 : 2</div><div class="formula-note">45-45-90: 1 : 1 : √2</div></div>
+      <div class="formula-card"><div class="formula-name">Circunferência</div><div class="formula-eq">C = 2πr</div><div class="formula-note">Área: A = πr²</div></div>
+      <div class="formula-card"><div class="formula-name">Volume – Cilindro</div><div class="formula-eq">V = πr²h</div><div class="formula-note">Cone: V = πr²h/3</div></div>
+      <div class="formula-card"><div class="formula-name">Volume – Esfera</div><div class="formula-eq">V = (4/3)πr³</div><div class="formula-note">Fornecida no SAT</div></div>
+      <div class="formula-card"><div class="formula-name">Porcentagem</div><div class="formula-eq">% = (parte/total) × 100</div><div class="formula-note">Variação: (novo−ant)/ant × 100</div></div>
+      <div class="formula-card"><div class="formula-name">Juros Compostos</div><div class="formula-eq">A = P(1 + r/n)^(nt)</div><div class="formula-note">Muito cobrado no SAT!</div></div>
+      <div class="formula-card"><div class="formula-name">Média</div><div class="formula-eq">x̄ = Σx / n</div><div class="formula-note">Soma ÷ quantidade</div></div>
+      <div class="formula-card"><div class="formula-name">Probabilidade</div><div class="formula-eq">P = favoráveis / total</div><div class="formula-note">P(A e B) = P(A)×P(B) se independ.</div></div>
+      <div class="formula-card"><div class="formula-name">Sin / Cos / Tan</div><div class="formula-eq">SOH · CAH · TOA</div><div class="formula-note">sin=op/hip | cos=adj/hip | tan=op/adj</div></div>
+      <div class="formula-card"><div class="formula-name">Exp. Crescimento</div><div class="formula-eq">f(x) = a · b^x</div><div class="formula-note">b>1 cresc. | 0<b<1 decresc.</div></div>
     </div>
   </div>
-</section>
 
-<!-- ── FOOTER ── -->
+  <!-- TÓPICOS CHECKLIST -->
+  <div style="margin-bottom:36px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">Todos os Tópicos — marque o que domina</div>
+    <div class="ref-grid">
 
-<footer class="site-footer">
-  <div class="footer-logo">StudySAT</div>
-  <div class="footer-copy">Plano personalizado · 2026</div>
-</footer>
+      <div class="ref-card">
+        <div class="ref-card-header">
+          <div class="ref-card-icon" style="background:var(--math-bg)">📐</div>
+          <span class="ref-card-title">Álgebra Linear</span>
+          <span class="ref-card-sub">~30% do Math</span>
+        </div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">01</span><div><div class="ref-item-title">Equações de 1º grau</div><div class="ref-item-desc">Isolar variável, membros opostos, verificação</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">02</span><div><div class="ref-item-title">Inequações lineares</div><div class="ref-item-desc">Inversão do sinal ao dividir/multiplicar por negativo</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">03</span><div><div class="ref-item-title">Sistemas de equações 2×2</div><div class="ref-item-desc">Substituição, eliminação, número de soluções</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">04</span><div><div class="ref-item-title">Funções lineares e gráficos</div><div class="ref-item-desc">Inclinação, interceptos, forma slope-intercept e standard</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">05</span><div><div class="ref-item-title">Word problems lineares</div><div class="ref-item-desc">Taxa, distância, mistura, idades — montar a equação</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">06</span><div><div class="ref-item-title">Razão e proporção</div><div class="ref-item-desc">Regra de três, taxas unitárias, escala</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">07</span><div><div class="ref-item-title">Percentagem</div><div class="ref-item-desc">Aumento/redução, variação percentual, porcentagem de porcentagem</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-header">
+          <div class="ref-card-icon" style="background:var(--math-bg)">🔢</div>
+          <span class="ref-card-title">Funções Avançadas</span>
+          <span class="ref-card-sub">~28% do Math</span>
+        </div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">01</span><div><div class="ref-item-title">Funções quadráticas</div><div class="ref-item-desc">Parábolas, zeros, vértice, forma standard e vertex</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">02</span><div><div class="ref-item-title">Fatoração</div><div class="ref-item-desc">Fator comum, diferença de quadrados, trinômio ax²+bx+c</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">03</span><div><div class="ref-item-title">Completar o quadrado</div><div class="ref-item-desc">Transformar standard → vertex form</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">04</span><div><div class="ref-item-title">Funções exponenciais</div><div class="ref-item-desc">Crescimento, decaimento, juros compostos</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">05</span><div><div class="ref-item-title">Expoentes e radicais</div><div class="ref-item-desc">Propriedades, potências fracionárias, simplificação</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">06</span><div><div class="ref-item-title">Notação funcional f(x)</div><div class="ref-item-desc">Avaliação, composição, inversas, transformações</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">07</span><div><div class="ref-item-title">Polinômios</div><div class="ref-item-desc">Divisão, teorema do resto, zeros de polinômios</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">08</span><div><div class="ref-item-title">Equações racionais</div><div class="ref-item-desc">MDC, restrições de domínio, simplificação</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-header">
+          <div class="ref-card-icon" style="background:var(--math-bg)">📊</div>
+          <span class="ref-card-title">Estatística & Dados</span>
+          <span class="ref-card-sub">~15% do Math</span>
+        </div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">01</span><div><div class="ref-item-title">Média, mediana, moda, amplitude</div><div class="ref-item-desc">Cálculo e interpretação em contextos do SAT</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">02</span><div><div class="ref-item-title">Desvio padrão (conceitual)</div><div class="ref-item-desc">SAT não pede cálculo — pede interpretação de "spread"</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">03</span><div><div class="ref-item-title">Gráficos e tabelas</div><div class="ref-item-desc">Bar, line, scatter, box plot, two-way table</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">04</span><div><div class="ref-item-title">Probabilidade</div><div class="ref-item-desc">Básica, condicional, eventos independentes</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">05</span><div><div class="ref-item-title">Amostras e inferência</div><div class="ref-item-desc">Random sampling, margem de erro, viés</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">06</span><div><div class="ref-item-title">Correlação vs. causalidade</div><div class="ref-item-desc">Associação não implica causa — armadilha frequente</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-card-header">
+          <div class="ref-card-icon" style="background:var(--math-bg)">📏</div>
+          <span class="ref-card-title">Geometria & Trig</span>
+          <span class="ref-card-sub">~13% do Math</span>
+        </div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">01</span><div><div class="ref-item-title">Ângulos e transversais</div><div class="ref-item-desc">Alternos, correspondentes, suplementares, vértice oposto</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">02</span><div><div class="ref-item-title">Triângulos — área e congruência</div><div class="ref-item-desc">SSS, SAS, ASA; soma dos ângulos = 180°</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">03</span><div><div class="ref-item-title">Triângulos semelhantes</div><div class="ref-item-desc">Razão de semelhança, proporcionalidade dos lados</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">04</span><div><div class="ref-item-title">Círculos</div><div class="ref-item-desc">Arcos, setores, ângulos inscritos, tangentes</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">05</span><div><div class="ref-item-title">Geometria analítica</div><div class="ref-item-desc">Equação da reta, distância, círculo no plano</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">06</span><div><div class="ref-item-title">Sólidos geométricos</div><div class="ref-item-desc">Volume e área superficial: cubo, cilindro, cone, esfera, prisma</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">07</span><div><div class="ref-item-title">Trigonometria básica</div><div class="ref-item-desc">sin, cos, tan; identidade sin²+cos²=1; ângulos no círculo</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PANEL: R&W REF ══════════ -->
+<div class="panel" id="panel-rw-ref">
+<div class="ref-wrap">
+
+  <div style="margin-bottom:32px">
+    <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;margin-bottom:8px">Reading & Writing — <span style="color:var(--rw)">Referência Completa</span></div>
+    <div style="font-size:14px;color:var(--text3)">Gramática, vocabulário, tipos de questão e estratégias para o módulo R&W do SAT.</div>
+  </div>
+
+  <!-- VOCABULÁRIO -->
+  <div style="margin-bottom:36px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">Vocabulário Essencial para o SAT</div>
+    <table class="vocab-table">
+      <thead><tr><th>Palavra</th><th>Significado</th><th>Exemplo de uso SAT</th></tr></thead>
+      <tbody>
+        <tr><td>Ambiguous</td><td>Ambíguo, com duplo sentido</td><td>"The author's tone is ambiguous — neither clearly positive nor negative."</td></tr>
+        <tr><td>Assert</td><td>Afirmar, declarar com confiança</td><td>"The researcher asserts that the data supports the hypothesis."</td></tr>
+        <tr><td>Concede</td><td>Admitir, ceder um ponto</td><td>"While conceding that costs are high, the author argues the benefits outweigh them."</td></tr>
+        <tr><td>Contentious</td><td>Controverso, gerador de debate</td><td>"Climate policy remains a contentious topic in politics."</td></tr>
+        <tr><td>Corroborate</td><td>Corroborar, confirmar</td><td>"The second study corroborates the findings of the first."</td></tr>
+        <tr><td>Disparity</td><td>Disparidade, diferença grande</td><td>"The disparity in test scores between schools is alarming."</td></tr>
+        <tr><td>Erroneous</td><td>Errado, equivocado</td><td>"The report was based on erroneous assumptions."</td></tr>
+        <tr><td>Exemplify</td><td>Exemplificar, ilustrar</td><td>"This case exemplifies the challenges of urban planning."</td></tr>
+        <tr><td>Facile</td><td>Superficial, simplista demais</td><td>"A facile solution to such a complex problem is unlikely to succeed."</td></tr>
+        <tr><td>Implicate</td><td>Implicar, envolver indiretamente</td><td>"New evidence implicates a third factor in the disease's spread."</td></tr>
+        <tr><td>Nuanced</td><td>Matizado, com sutilezas</td><td>"A nuanced argument considers both benefits and drawbacks."</td></tr>
+        <tr><td>Paradox</td><td>Paradoxo, contradição aparente</td><td>"It is a paradox that the treatment causes the very symptoms it aims to cure."</td></tr>
+        <tr><td>Pervasive</td><td>Difundido, generalizado</td><td>"Misinformation has become pervasive on social media."</td></tr>
+        <tr><td>Refute</td><td>Refutar, provar que está errado</td><td>"The study refutes the previous claim about caffeine's effects."</td></tr>
+        <tr><td>Substantiate</td><td>Comprovar, fundamentar</td><td>"The author substantiates her argument with three case studies."</td></tr>
+        <tr><td>Succumb</td><td>Ceder, render-se</td><td>"Despite resistance, she succumbed to pressure and agreed."</td></tr>
+        <tr><td>Superfluous</td><td>Supérfluo, desnecessário</td><td>"Cut superfluous details to make your argument more concise."</td></tr>
+        <tr><td>Tenuous</td><td>Tênue, fraco, frágil</td><td>"The connection between the two events is tenuous at best."</td></tr>
+        <tr><td>Undermine</td><td>Minar, enfraquecer</td><td>"The new data undermines the original hypothesis."</td></tr>
+        <tr><td>Wary</td><td>Cauteloso, desconfiante</td><td>"Consumers remain wary of products with unverified health claims."</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GRAMÁTICA -->
+  <div style="margin-bottom:36px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">Regras de Gramática — Standard English Conventions</div>
+    <div class="grammar-list">
+      <div class="grammar-item">
+        <div class="grammar-rule">1. Concordância sujeito-verbo com "each / every / either / neither / one of"</div>
+        <div class="grammar-ex">❌ Each of the students <span>are</span> responsible. &nbsp;✅ Each of the students <span>is</span> responsible.<br>Regra: "Each", "every", "either", "neither" = singular, sempre.</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">2. Pronomes — caso e referência</div>
+        <div class="grammar-ex">❌ Between you and <span>I</span>, this is wrong. &nbsp;✅ Between you and <span>me</span>.<br>Após preposição, use pronome objeto (me, him, her, us, them). Evite pronomes ambíguos sem antecedente claro.</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">3. Vírgulas — quando usar e quando não usar</div>
+        <div class="grammar-ex">✅ Vírgula antes de coordinating conjunctions (FANBOYS): for, and, nor, but, or, yet, so.<br>✅ Vírgula após introductory clause: <span>"Although it rained, we went."</span><br>❌ Não separe sujeito do verbo com vírgula.</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">4. Ponto e vírgula (;) vs. vírgula</div>
+        <div class="grammar-ex">✅ Use ; para unir duas sentenças independentes completas.<br>❌ Não use vírgula sozinha para isso (comma splice).<br>Exemplo: <span>"She studied; she passed."</span></div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">5. Modificadores deslocados (dangling/misplaced modifiers)</div>
+        <div class="grammar-ex">❌ <span>"Running down the street, the rain started."</span> (Quem corria? A chuva?)<br>✅ "Running down the street, <span>she</span> felt the rain start." O modificador deve estar perto do que modifica.</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">6. Paralelismo</div>
+        <div class="grammar-ex">❌ She likes running, to swim, and bike rides.<br>✅ She likes <span>running, swimming, and biking</span>.<br>Elementos em lista devem ter a mesma forma gramatical.</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">7. Tempos verbais — consistência</div>
+        <div class="grammar-ex">❌ She <span>walked</span> in and <span>sits</span> down.<br>✅ She walked in and sat down. Não misture tempos sem razão.</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">8. Dois pontos (:) e travessão (—)</div>
+        <div class="grammar-ex">: introduz uma lista ou explicação após sentença completa.<br>— pode substituir vírgulas para maior ênfase, ou marcar interrupção.<br><span>"She had one goal: to finish the race."</span></div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">9. Concisão — eliminar redundância</div>
+        <div class="grammar-ex">O SAT sempre tem uma opção mais concisa. Se duas alternativas dizem a mesma coisa, a mais curta é geralmente a certa.<br>❌ "Due to the fact that" &nbsp;✅ "<span>Because</span>"</div>
+      </div>
+      <div class="grammar-item">
+        <div class="grammar-rule">10. Who vs. Whom / That vs. Which</div>
+        <div class="grammar-ex">Who = sujeito | Whom = objeto. Teste: substitua por he/him. Se "him" cabe → whom.<br>That = cláusula restritiva (sem vírgula) | Which = cláusula não-restritiva (com vírgula).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOS DE QUESTÃO -->
+  <div style="margin-bottom:36px">
+    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">Tipos de Questão do R&W</div>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <div class="ref-card-header"><div class="ref-card-icon" style="background:var(--rw-bg)">📖</div><span class="ref-card-title">Information & Ideas</span><span class="ref-card-sub">~26%</span></div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Central Idea / Main Purpose</div><div class="ref-item-desc">O que o texto inteiro quer dizer ou fazer? Cuidado com opções muito específicas.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Detail questions</div><div class="ref-item-desc">Resposta está explicitamente no texto. Localize antes de escolher.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Inference</div><div class="ref-item-desc">"Most likely suggests", "implies" — inferência suportada, não especulação.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Command of Evidence (texto)</div><div class="ref-item-desc">Qual trecho do texto apoia melhor uma afirmação?</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Command of Evidence (dados)</div><div class="ref-item-desc">Usar gráfico/tabela para completar afirmação. Muito frequente!</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-header"><div class="ref-card-icon" style="background:var(--rw-bg)">✍️</div><span class="ref-card-title">Craft & Structure</span><span class="ref-card-sub">~28%</span></div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Words in Context (vocabulário)</div><div class="ref-item-desc">Qual palavra melhor completa o sentido? Elimine pelos contextos opostos.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Text Structure & Purpose</div><div class="ref-item-desc">Função de um parágrafo específico no texto todo.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Cross-text connections</div><div class="ref-item-desc">Dois textos — como um autor reagiria ao outro?</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-header"><div class="ref-card-icon" style="background:var(--rw-bg)">💡</div><span class="ref-card-title">Expression of Ideas</span><span class="ref-card-sub">~20%</span></div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Rhetorical synthesis</div><div class="ref-item-desc">Combinar notas/fontes em uma frase eficaz. Questão mais nova do Digital SAT.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Transitions</div><div class="ref-item-desc">However, Therefore, Furthermore, Similarly, In contrast — saber quando usar cada um.</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-card-header"><div class="ref-card-icon" style="background:var(--rw-bg)">📝</div><span class="ref-card-title">Standard English</span><span class="ref-card-sub">~26%</span></div>
+        <div class="ref-card-body">
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Boundaries (pontuação de sentenças)</div><div class="ref-item-desc">Comma splice, run-on, fragment — identificar e corrigir.</div></div><div class="ref-item-check">✓</div></div>
+          <div class="ref-item" onclick="toggleRef(this)"><span class="ref-item-idx">·</span><div><div class="ref-item-title">Form, Structure & Sense</div><div class="ref-item-desc">Concordância, pronomes, modificadores, verbos, paralelismo.</div></div><div class="ref-item-check">✓</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ PANEL: STRATEGY ══════════ -->
+<div class="panel" id="panel-strategy">
+<div class="strat-wrap">
+
+  <div style="margin-bottom:32px">
+    <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;margin-bottom:8px">Estratégia — <span style="color:var(--strat)">Como Pontuar Alto</span></div>
+    <div style="font-size:14px;color:var(--text3)">Táticas específicas para o formato Digital SAT. Adapte ao seu perfil B1-B2.</div>
+  </div>
+
+  <div class="strat-section">
+    <div class="strat-h2">Gestão de Tempo por Módulo</div>
+    <div class="timing-grid">
+      <div class="timing-card"><div class="timing-label">R&W — cada questão</div><div class="timing-val" style="color:var(--rw)">~1:10</div><div class="timing-note">32 min ÷ 27 questões</div></div>
+      <div class="timing-card"><div class="timing-label">Math — cada questão</div><div class="timing-val" style="color:var(--math)">~1:35</div><div class="timing-note">35 min ÷ 22 questões</div></div>
+      <div class="timing-card"><div class="timing-label">Limite por questão</div><div class="timing-val" style="color:var(--sim)">2:00</div><div class="timing-note">Se passou, marque e pule</div></div>
+      <div class="timing-card"><div class="timing-label">Revisão no final</div><div class="timing-val" style="color:var(--strat)">3–5 min</div><div class="timing-note">Reserve para revisar marcadas</div></div>
+    </div>
+  </div>
+
+  <div class="strat-section">
+    <div class="strat-h2">Estratégias para Math</div>
+    <div class="strat-grid">
+      <div class="strat-card"><div class="strat-card-num">01</div><div class="strat-card-title">Plugue números</div><div class="strat-card-text">Quando a questão tiver variáveis nas alternativas, substitua números simples (0, 1, 2) nas opções para verificar qual é verdadeira. Economiza tempo em álgebra complexa.</div></div>
+      <div class="strat-card"><div class="strat-card-num">02</div><div class="strat-card-title">Trabalhe de trás para frente</div><div class="strat-card-text">Em questões de múltipla escolha, teste as alternativas na equação — muitas vezes mais rápido que resolver algebricamente. Comece pela opção B ou C (valores intermediários).</div></div>
+      <div class="strat-card"><div class="strat-card-num">03</div><div class="strat-card-title">Desenhe sempre</div><div class="strat-card-text">Para geometria e qualquer problema com figuras, desenhe no papel rascunho. Isso ajuda a visualizar e evita erros mentais de rotação/proporção.</div></div>
+      <div class="strat-card"><div class="strat-card-num">04</div><div class="strat-card-title">Leia o que está sendo pedido</div><div class="strat-card-text">O SAT frequentemente resolve a questão mas pede "6x" quando você calculou x. Releia a pergunta antes de marcar a resposta. Muitos erros são desse tipo.</div></div>
+      <div class="strat-card"><div class="strat-card-num">05</div><div class="strat-card-title">Calculadora com sabedoria</div><div class="strat-card-text">Desmos está disponível para todas as questões. Use para verificar, não para calcular tudo. Saber fazer mentalmente é mais rápido em ~40% das questões.</div></div>
+      <div class="strat-card"><div class="strat-card-num">06</div><div class="strat-card-title">Grid-in: sem chute</div><div class="strat-card-text">Nas questões de resposta direta (sem alternativas), não há "chute" possível. Se não sabe, pule e volte. Não deixe em branco — tente uma estimativa baseada na lógica do problema.</div></div>
+    </div>
+  </div>
+
+  <div class="strat-section">
+    <div class="strat-h2">Estratégias para Reading & Writing</div>
+    <div class="strat-grid">
+      <div class="strat-card"><div class="strat-card-num">01</div><div class="strat-card-title">Leia a pergunta primeiro</div><div class="strat-card-text">No SAT Digital, cada questão tem uma passagem curta. Leia a pergunta antes da passagem — assim você sabe exatamente o que procurar e não perde tempo lendo o que não importa.</div></div>
+      <div class="strat-card"><div class="strat-card-num">02</div><div class="strat-card-title">Elimine os extremos</div><div class="strat-card-text">Alternativas com "always", "never", "all", "none" raramente são corretas no SAT — o texto acadêmico é moderado. Elimine primeiro e escolha entre as opções restantes mais equilibradas.</div></div>
+      <div class="strat-card"><div class="strat-card-num">03</div><div class="strat-card-title">Vocabulário: use o contexto</div><div class="strat-card-text">Para "Words in Context", cubra o blank, leia a frase e pense em uma palavra sua. Depois compare com as opções. Isso evita que o significado familiar da palavra te confunda.</div></div>
+      <div class="strat-card"><div class="strat-card-num">04</div><div class="strat-card-title">Transitions: identifique a relação</div><div class="strat-card-text">Antes de escolher a transição, pergunte: as frases têm relação de contraste, adição, causa ou exemplo? Então escolha o conectivo que expressa exatamente essa relação.</div></div>
+      <div class="strat-card"><div class="strat-card-num">05</div><div class="strat-card-title">Gramática: isole a questão</div><div class="strat-card-text">Identifique o problema específico (concordância? pontuação? pronome?). Ignore o resto da frase e resolva só aquele elemento. Não deixe a frase longa te distrair.</div></div>
+      <div class="strat-card"><div class="strat-card-num">06</div><div class="strat-card-title">Synthesis: seja literal</div><div class="strat-card-text">Em questões de Rhetorical Synthesis, a resposta correta usa exatamente as informações das notas — sem adicionar, sem inferir além. A resposta "óbvia" demais costuma ser a correta.</div></div>
+    </div>
+  </div>
+
+  <div class="strat-section">
+    <div class="strat-h2">Formato Adaptativo — Como Aproveitar</div>
+    <div class="strat-grid">
+      <div class="strat-card"><div class="strat-card-num">A</div><div class="strat-card-title">Módulo 1 determina tudo</div><div class="strat-card-text">Bom desempenho no Módulo 1 → você vai para o Módulo 2 difícil, que tem maior teto de pontuação. Invista máxima atenção e precisão no primeiro módulo de cada seção.</div></div>
+      <div class="strat-card"><div class="strat-card-num">B</div><div class="strat-card-title">Não existe "questão fácil"</div><div class="strat-card-text">No módulo adaptativo, questões fáceis no início podem ser armadilhas para acumuladores de erros. Trate cada questão com atenção igual — não relaxe por achar que está fácil.</div></div>
+      <div class="strat-card"><div class="strat-card-num">C</div><div class="strat-card-title">Use o marcador estrategicamente</div><div class="strat-card-text">Marque para revisão questões onde você está 50/50. Responda com o melhor palpite, marque, e volte se sobrar tempo. Nunca deixe em branco sem uma resposta inicial.</div></div>
+    </div>
+  </div>
+
+</div>
+</div>
 
 <script>
-const SESSIONS_KEY = 'sat_done_sessions_v2';
-
-function getSessionDates(startDate, endDate) {
-  const dates = [];
-  const current = new Date(startDate);
-  const end = new Date(endDate);
-  while (current <= end) {
-    const dow = current.getDay();
-    if (dow === 0 || dow === 1) dates.push(new Date(current));
-    current.setDate(current.getDate() + 1);
+/* ══ DATA ══ */
+const WEEKS = [
+  {
+    num:'SEMANA 01', title:'Diagnóstico & Fundamentos de Álgebra', sub:'Dias 1–2',
+    sessions:[
+      {
+        day:'DOM', type:'strat',
+        title:'Diagnóstico Inicial + Estrutura do SAT',
+        topics:['Mini-simulado oficial no Khan Academy','Mapeamento de pontos fracos','Estrutura do SAT Digital (R&W + Math)','Definição de metas de pontuação'],
+        detail:{
+          conteudo:'Faça o diagnóstico oficial no Khan Academy (khanacademy.org/sat). Ele cria um relatório personalizado das suas lacunas. Além disso, explore o Bluebook App — navegue pela interface sem pressão de tempo.',
+          recursos:['Khan Academy SAT Diagnostic','Bluebook App — tour','College Board: What is on the SAT?'],
+          dica:'Não tente estudar conteúdo hoje. O objetivo é APENAS mapear onde você está. Um diagnóstico honesto vale mais que horas de estudo sem direção.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Álgebra Linear I — Equações e Inequações',
+        topics:['Equações de 1º grau (isolamento de variável)','Inequações lineares e inversão de sinal','Sistemas 2×2: substituição e eliminação','Equações com frações e parênteses'],
+        detail:{
+          conteudo:'Domine as 3 formas de resolver sistemas: substituição (uma equação dentro da outra), eliminação (somar/subtrair equações) e gráfico (interseção de retas). O SAT adora perguntar "how many solutions" — saiba quando o sistema é inconsistente (paralelas) ou dependente (mesma reta).',
+          recursos:['Khan: Linear equations & inequalities','Khan: Systems of equations','Praticar: 10 questões SAT de álgebra linear'],
+          dica:'A "pegadinha" mais comum: o SAT resolve x mas pede "2x+1". Releia sempre o que está sendo pedido antes de marcar.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 02', title:'Funções Lineares & Vocabulário em Contexto', sub:'Dias 3–4',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W I — Vocabulário em Contexto',
+        topics:['Estratégia: ler a pergunta antes do texto','Words in Context — método de cobertura','20 palavras acadêmicas de alta frequência','Questões de Main Idea e Detail'],
+        detail:{
+          conteudo:'O SAT não testa vocabulário isolado — testa a palavra certa no contexto. Para Words in Context: (1) cubra o blank, (2) leia a frase e pense na sua palavra, (3) compare com as opções. Pratique com textos de ciência, história e humanidades — os 3 tipos que aparecem no SAT.',
+          recursos:['Khan: Words in Context','Merriam-Webster Vocabulary Quiz','Praticar: 10 questões de vocabulário SAT'],
+          dica:'Palavras como "assert", "refute", "concede", "undermine" aparecem sempre. Crie flashcards com 5 palavras por semana e revise-as antes de cada sessão.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Funções Lineares e Gráficos',
+        topics:['y = mx + b: inclinação e interceptos','Forma standard: Ax + By = C','Paralelismo (mesma inclinação) e perpendicularidade','Modelagem linear: criar equação a partir de contexto'],
+        detail:{
+          conteudo:'O SAT adora pedir: "qual é a inclinação?" a partir de um contexto verbal — ex: "a planta cresce 3cm por semana, começando com 10cm". Isso é y = 3x + 10. Pratique interpretar a inclinação como taxa de variação e o intercepto como valor inicial.',
+          recursos:['Khan: Linear functions','Desmos.com — visualize gráficos ao vivo','Praticar: 8 questões de funções lineares SAT'],
+          dica:'Inclinação negativa = função decrescente. Se o problema diz "decreases by 5 per month", m = −5. Parece óbvio, mas em contexto é onde muitos erram.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 03', title:'Porcentagem, Razão & Gramática Essencial', sub:'Dias 5–6',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W II — Gramática: Concordância e Pontuação',
+        topics:['Concordância sujeito-verbo (each, every, neither, none)','Pronomes: caso nominativo vs. objetivo','Vírgula: quando usar e quando é erro','Ponto e vírgula, dois pontos e travessão'],
+        detail:{
+          conteudo:'"Each of the employees is..." — o sujeito é "each", não "employees". O SAT ama colocar um substantivo plural entre o sujeito e o verbo para te confundir. Sempre volte ao sujeito real da frase para determinar o verbo. Para pontuação: ponto e vírgula une duas sentenças independentes completas. Vírgula sozinha = comma splice (erro).',
+          recursos:['Khan: Conventions of standard English','Purdue OWL: Subject-verb agreement','Praticar: 15 questões de gramática SAT'],
+          dica:'Teste rápido para pronome: substitua por "he" ou "him". Se "him" funciona, use "whom". Se "he" funciona, use "who".'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Porcentagem, Razão e Taxas',
+        topics:['Porcentagem: parte, todo, taxa','Variação percentual: (novo−ant)/ant × 100','Razão e proporção: regra de três','Taxas unitárias e problemas de mistura'],
+        detail:{
+          conteudo:'Porcentagem de porcentagem é a armadilha clássica: "um aumento de 20% seguido de uma redução de 20% NÃO volta ao original" — resulta em 96% do original. O SAT cobra isso. Também adora problemas de "two quantities in ratio" onde você precisa encontrar valores absolutos.',
+          recursos:['Khan: Ratios, rates, & proportions','Khan: Percentages','Praticar: 10 questões de porcentagem SAT'],
+          dica:'Para problemas de razão, use a variável k: se a razão é 3:5, o total é 3k + 5k = 8k. Ache k a partir do dado fornecido.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 04', title:'Funções Quadráticas & Estrutura de Texto', sub:'Dias 7–8',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W III — Estrutura de Texto e Inferência',
+        topics:['Text Structure: como identificar a função de cada parágrafo','Purpose: por que o autor escreveu isso?','Inference: o que o texto "sugere" vs. o que diz explicitamente','Cross-text: comparar dois textos curtos'],
+        detail:{
+          conteudo:'Para Text Structure, pergunte: "este parágrafo introduz, contrasta, exemplifica, ou refuta?" Para inferência, a resposta correta é a mais conservadora — o que o texto PERMITE concluir, não o que parece óbvio. Cuidado com inferências que vão além do que o texto suporta.',
+          recursos:['Khan: Reading comprehension strategies','Official SAT Practice: Passage-based questions','Ler 1 artigo da The Atlantic ou Scientific American por semana'],
+          dica:'Em questões de inferência, se a alternativa precisar de qualquer informação que não está no texto, ela está errada. O SAT não pede conhecimento externo.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Funções Quadráticas I — Parábolas e Zeros',
+        topics:['Forma standard: ax² + bx + c','Fatoração: fator comum, trinômio, diferença de quadrados','Zeros da função: x-intercepts','Vértice e eixo de simetria: x = −b/2a'],
+        detail:{
+          conteudo:'O SAT cobra quadráticas em três formas: standard (ax²+bx+c), vertex (a(x−h)²+k), e factored (a(x−r₁)(x−r₂)). Saber converter entre elas é essencial. A forma factored dá os zeros diretamente. A vertex form dá o mínimo/máximo diretamente.',
+          recursos:['Khan: Quadratic functions & equations','Desmos: plote parábolas e mova os parâmetros','Praticar: 12 questões de quadráticas SAT'],
+          dica:'Se o SAT perguntar "para quais valores de x a função é negativa", você precisa dos zeros E do coeficiente a. Se a>0, a parábola abre para cima (negativa entre os zeros).'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 05', title:'Fórmula Quadrática & Dados/Gráficos', sub:'Dias 9–10',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Funções Quadráticas II — Fórmula e Discriminante',
+        topics:['Fórmula de Bhaskara/quadrática','Discriminante: Δ = b²−4ac e número de soluções','Completar o quadrado → vertex form','Sistemas linear-quadrático: quantas interseções?'],
+        detail:{
+          conteudo:'O discriminante responde: quantas soluções reais? Δ>0 → duas, Δ=0 → uma (tangente), Δ<0 → nenhuma (a parábola não toca o eixo x). O SAT frequentemente pergunta "para qual valor de k o sistema tem exatamente uma solução?" — isso exige Δ=0.',
+          recursos:['Khan: The quadratic formula','Khan: Discriminant','Praticar: 10 questões de discriminante SAT'],
+          dica:'Memorize: se o SAT pede "no real solutions", Δ<0. Se pede "one solution", Δ=0. Se pede "two solutions", Δ>0. São questões rápidas se você souber isso.'
+        }
+      },
+      {
+        day:'SEG', type:'rw',
+        title:'R&W IV — Dados, Gráficos e Command of Evidence',
+        topics:['Interpretar tabelas, gráficos de barras, scatter plots','Command of Evidence: qual dado suporta a afirmação?','Dois textos + gráfico: integrar informações','Correlação vs. causalidade no contexto do SAT'],
+        detail:{
+          conteudo:'"Command of Evidence — Quantitative" é uma das questões mais novas e frequentes do Digital SAT. Você recebe um texto com uma afirmação em branco + um gráfico, e precisa completar a afirmação com os dados corretos. Leia o eixo x, y e as legendas com cuidado antes de escolher.',
+          recursos:['Khan: Analyzing data and graphs','Official SAT Practice: Data interpretation','Praticar: 10 questões de Command of Evidence'],
+          dica:'O gráfico nunca "prova" mais do que ele mostra. Se diz que houve correlação, não diz que houve causalidade. Se mostra um período de 5 anos, não extrapole para 10.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 06', title:'Exponenciais & Transições/Concisão', sub:'Dias 11–12',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W V — Transições, Concisão e Rhetorical Synthesis',
+        topics:['Conectivos: contraste, adição, causa, exemplo','Concisão: eliminar redundância sem perder sentido','Rhetorical Synthesis: combinar notas em uma frase','Paralelismo e consistência de tom'],
+        detail:{
+          conteudo:'Para Transitions: (1) leia as duas frases, (2) identifique a relação (contraste? adição? causa?), (3) escolha o conectivo. Para Rhetorical Synthesis — questão exclusiva do Digital SAT — você recebe 3–4 bullet points com informações e precisa combiná-los numa frase. A resposta certa usa as informações literalmente, sem adicionar interpretação.',
+          recursos:['Khan: Transitions','Khan: Rhetorical synthesis','Lista de conectivos por categoria (faça um flashcard)'],
+          dica:'Transitions mais cobradas: However (contrasto), Therefore/Thus (conclusão), Furthermore/Additionally (adição), Similarly (comparação), For example (ilustração), In contrast (oposição).'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Funções Exponenciais e Expoentes',
+        topics:['f(x) = a·bˣ: crescimento e decaimento','Propriedades de expoentes (produto, quociente, potência)','Potências fracionárias = radicais','Juros compostos: A = P(1+r/n)^(nt)'],
+        detail:{
+          conteudo:'O SAT adora contextualizar exponenciais: "uma bactéria dobra a cada hora" → f(t) = N₀·2^t. "Um carro deprecia 15% ao ano" → f(t) = V₀·(0,85)^t. Identifique a base: se b>1, cresce; se 0<b<1, decresce. Juros compostos aparecem 1–2 vezes por prova — memorize a fórmula.',
+          recursos:['Khan: Exponential growth & decay','Khan: Exponent rules','Praticar: 10 questões de exponenciais SAT'],
+          dica:'Confundir f(x) = 2x (linear) com f(x) = 2^x (exponencial) é erro comum. Em contexto: se diz "increases BY 3 each year" = linear; se diz "increases BY 3% each year" = exponencial.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 07', title:'Estatística & Simulado #1', sub:'Dias 13–14',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Estatística e Probabilidade',
+        topics:['Média, mediana, moda, amplitude e outliers','Desvio padrão: interpretar sem calcular','Probabilidade básica e condicional','Two-way tables: probabilidade conjunta e marginal'],
+        detail:{
+          conteudo:'O SAT não pede que você calcule o desvio padrão — pede que você interprete. "Distribuição com maior desvio padrão" = dados mais espalhados. Para two-way tables, sempre identifique o total correto: probabilidade condicional usa o total da linha/coluna, não o total geral.',
+          recursos:['Khan: Statistics & probability','Khan: Two-way tables','Praticar: 12 questões de estatística SAT'],
+          dica:'Se o SAT adicionar um outlier muito alto, a média sobe mas a mediana quase não muda. Isso é um padrão de questão frequentíssimo.'
+        }
+      },
+      {
+        day:'SEG', type:'sim',
+        title:'Simulado Completo #1',
+        topics:['Simulado oficial: Math + R&W completos (2h14)','Revisão detalhada de todos os erros','Classificar erros: conceito, atenção, ou tempo','Atualizar caderno de erros'],
+        detail:{
+          conteudo:'Use um simulado oficial do College Board ou Khan Academy. Faça em condições reais: sem interrupções, cronômetro ligado, interface Bluebook se possível. Após o simulado, revise CADA questão errada — não apenas a resposta certa, mas POR QUE as outras estão erradas. Isso é o que mais acelera o aprendizado.',
+          recursos:['Official SAT Practice Test no Bluebook App','Khan Academy Full Practice Test','Khan Academy: Review explanations'],
+          dica:'Após o simulado, categorize seus erros em 3 tipos: (A) não sabia o conteúdo, (B) sabia mas errei por atenção/pressa, (C) corri sem tempo. Cada tipo tem uma solução diferente.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 08', title:'Geometria & Revisão de Inglês Avançado', sub:'Dias 15–16',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W VI — Textos Complexos e Argumentation',
+        topics:['Textos de ciência: hipótese, método, conclusão','Textos históricos: argumento e evidência','Identificar claim, evidence e counterclaim','Enfraquecimento e fortalecimento de argumentos'],
+        detail:{
+          conteudo:'O SAT inclui textos de diversas áreas: ciência, história, literatura e humanidades. Para textos de ciência, entenda o fluxo: fenômeno → hipótese → experimento → dados → conclusão. Para questões de "enfraquecimento": procure a opção que mostre uma exceção ao padrão ou uma falha metodológica.',
+          recursos:['Ler: Scientific American (1 artigo/semana)','Ler: Smithsonian Magazine ou The Atlantic','Khan Academy: Argument and evidence'],
+          dica:'Questões de "which finding would most weaken the argument" são difíceis mas valiosas. A resposta ataca a premissa central, não um detalhe periférico do argumento.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Geometria I — Plana e Analítica',
+        topics:['Triângulos: propriedades, congruência, área','Triângulos especiais: 30-60-90 e 45-45-90','Círculos: área, arco, setor e ângulos inscritos','Geometria analítica: distância, ponto médio, equação da reta'],
+        detail:{
+          conteudo:'O SAT dá algumas fórmulas no início da prova (área do círculo, triângulos especiais, Pitágoras). Memorize de qualquer forma — não perca tempo consultando. Para triângulos especiais: 30-60-90 tem lados na razão 1:√3:2. Qualquer triângulo com ângulo de 30° está nessa família.',
+          recursos:['Khan: Geometry (all topics)','Desmos: geometria analítica','Praticar: 10 questões de geometria SAT'],
+          dica:'Ângulos inscritos em círculos: o ângulo inscrito é metade do arco que ele subentende. Se o arco é 80°, o ângulo inscrito é 40°. Esse é um dos "truques" mais cobrados em geometria no SAT.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 09', title:'Polinômios, Trigonometria & Simulado #2', sub:'Dias 17+',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Polinômios, Trigonometria e Funções Avançadas',
+        topics:['Divisão de polinômios e teorema do resto','Trigonometria: sin, cos, tan, SOH-CAH-TOA','Identidade fundamental: sin²θ + cos²θ = 1','Transformações de funções: deslocamento, reflexão, escalonamento'],
+        detail:{
+          conteudo:'Trigonometria no SAT é básica: saiba encontrar lados desconhecidos em triângulos retângulos e memorize os valores especiais (sin30°=0.5, cos60°=0.5, tan45°=1). Para transformações de funções: f(x)+k desloca verticalmente, f(x+k) desloca horizontalmente (na direção oposta!), -f(x) reflete no eixo x.',
+          recursos:['Khan: Trigonometry','Khan: Transformations of functions','Praticar: 8 questões de trigonometria e funções avançadas'],
+          dica:'A identidade sin²θ + cos²θ = 1 aparece 1-2 vezes por simulado. Se a questão der sin e pedir cos, use essa identidade. Não precisa de mais nada.'
+        }
+      },
+      {
+        day:'SEG', type:'sim',
+        title:'Simulado Completo #2 + Análise de Progresso',
+        topics:['Simulado oficial completo (2h14)','Compare com Simulado #1: evolução por seção','Foco: erros repetidos do Simulado #1','Revisão intensiva dos padrões de erro'],
+        detail:{
+          conteudo:'Compare sua pontuação do Simulado #2 com o #1. Analise: (1) quais tipos de questão ainda geram mais erros, (2) se melhorou na gestão de tempo, (3) se há questões que você errou nos dois simulados (padrão de erro persistente = prioridade máxima nas próximas semanas).',
+          recursos:['Official SAT Practice Test (diferente do #1)','Planilha de tracking de erros (crie uma)','Khan Academy: Score report analysis'],
+          dica:'Se sua pontuação não aumentou entre os dois simulados, não desanime — às vezes o crescimento é interno (menos erros por atenção, mais questões tentadas). Olhe os números detalhados, não só o score final.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 10', title:'Geometria II — Sólidos e Ângulos Avançados', sub:'Dias 19–20',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Geometria II — Sólidos, Ângulos e Semelhança',
+        topics:['Volume: cilindro, cone, esfera, prisma retangular','Triângulos semelhantes: razão de semelhança','Ângulos em transversais: alternos, correspondentes, co-internos','Área de setores e comprimento de arco'],
+        detail:{
+          conteudo:'Volume do cilindro = πr²h. Volume do cone = πr²h/3. Volume da esfera = (4/3)πr³ — essas são fornecidas no SAT, mas memorize para economizar tempo. Para triângulos semelhantes: se a razão de semelhança é k, a razão de áreas é k². Isso aparece em questões de "scaling" no SAT.',
+          recursos:['Khan: Solid geometry','Khan: Similar triangles','Khan: Circles — arc length and sector area','Praticar: 10 questões de geometria avançada SAT'],
+          dica:'Questão típica do SAT: "um cone e um cilindro têm a mesma base e a mesma altura — qual é a razão dos volumes?" Resposta: 1:3. Memorize esse fato.'
+        }
+      },
+      {
+        day:'SEG', type:'rw',
+        title:'R&W VII — Modificadores, Paralelismo e Tempos Verbais',
+        topics:['Dangling e misplaced modifiers','Paralelismo em listas e comparações','Consistência de tempo verbal na frase','Voz ativa vs. passiva no SAT'],
+        detail:{
+          conteudo:'Dangling modifier: o sujeito implícito no modificador deve ser o mesmo da oração principal. "Running down the street, the rain started" — a chuva não estava correndo! Para paralelismo: "She likes running, swimming, and to bike" → errado. A forma deve ser idêntica em todos os elementos da lista.',
+          recursos:['Khan: Dangling modifiers','Khan: Parallel structure','Purdue OWL: Verb tense consistency','Praticar: 12 questões de gramática avançada SAT'],
+          dica:'Para paralelismo em comparações: "The results of study A were more significant than study B" — errado! Correto: "than those of study B" (compara resultados com resultados, não com o estudo).'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 11', title:'Inequações Avançadas & Leitura de Ciências', sub:'Dias 21–22',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W VIII — Textos de Ciência e Humanities',
+        topics:['Leitura de textos científicos: identificar hipótese e conclusão','Textos históricos: argumento retórico e evidência','Tone e propósito em textos literários','Praticar leitura rápida com compreensão'],
+        detail:{
+          conteudo:'O SAT inclui textos de 4 domínios: literature (ficção), history/social studies, humanities (arte, filosofia, cultura) e science. Para ciência: entenda o fluxo hipótese→método→resultado→conclusão. Para história: identifique o argumento central e as evidências que o sustentam. Quanto mais você ler em inglês fora do SAT, mais natural ficará.',
+          recursos:['Scientific American: 1 artigo por semana','Smithsonian Magazine online (gratuito)','Khan Academy: Cross-text connections','Praticar: 10 passagens mistas SAT'],
+          dica:'Textos literários no SAT são os mais curtos (25–50 palavras). Foque em tom, personagem e ponto de vista. A pergunta quase sempre é sobre vocabulário em contexto ou propósito de uma frase específica.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Inequações Quadráticas e Sistemas Avançados',
+        topics:['Inequações de 2º grau: resolver por esboço gráfico','Sistemas linear-quadrático: número de soluções via discriminante','Inequações com valor absoluto: |x − a| < b','Modelagem com inequações em contexto'],
+        detail:{
+          conteudo:'Para inequações quadráticas: (1) encontre os zeros, (2) esboce a parábola, (3) determine onde a parábola está acima/abaixo do eixo x. Para |x − a| < b: isso significa a − b < x < a + b (dentro do intervalo). |x − a| > b significa x < a − b ou x > a + b (fora do intervalo).',
+          recursos:['Khan: Quadratic inequalities','Khan: Absolute value inequalities','Praticar: 10 questões de inequações SAT'],
+          dica:'O SAT raramente pede resolução algébrica de inequações quadráticas — geralmente pede interpretação gráfica. "Para quais valores de x, f(x) < 0?" = onde a parábola está abaixo do eixo x.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 12', title:'Funções Avançadas & Revisão de Erros', sub:'Dias 23–24',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Funções: Composição, Inversas e Transformações',
+        topics:['Composição: f(g(x)) — aplicar uma função dentro da outra','Funções inversas: f⁻¹(x) — inverter entradas e saídas','Transformações: deslocamento, reflexão, escalonamento','Domínio e imagem: restrições práticas'],
+        detail:{
+          conteudo:'Para f(g(x)): substitua g(x) inteiro no lugar de x em f. Exemplo: f(x)=2x+1, g(x)=x², então f(g(x))=2x²+1. Para função inversa: troque x e y, isole y. A inversa de f(x)=3x+6 é f⁻¹(x)=(x−6)/3. O gráfico da inversa é a reflexão da função original sobre y=x.',
+          recursos:['Khan: Composite functions','Khan: Inverse functions','Khan: Transformations of functions','Praticar: 10 questões de funções avançadas SAT'],
+          dica:'Transformação f(x−3): desloca 3 unidades para a DIREITA (não esquerda!). A maioria erra isso. Sempre que o deslocamento está dentro dos parênteses, o sentido é invertido.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Revisão Profunda de Erros — Caderno de Padrões',
+        topics:['Revisar todos os erros dos Simulados #1 e #2','Classificar por categoria: Math × R&W × tipo de questão','Identificar os 3 padrões de erro mais frequentes','Criar plano de ataque para as semanas seguintes'],
+        detail:{
+          conteudo:'Esta sessão é inteiramente dedicada à revisão analítica. Pegue seu caderno de erros e categorize tudo: quais tópicos de Math aparecem mais nos seus erros? Quais tipos de questão de R&W? Há erros de atenção (você sabia o conteúdo mas errou)? Esta análise guiará suas próximas sessões com muito mais eficiência.',
+          recursos:['Caderno de erros pessoal','Planilha de categorização de erros','Khan Academy: Score report por habilidade'],
+          dica:'O padrão mais comum de melhora no SAT: reduzir erros de atenção primeiro (mais rápido), depois fechar lacunas de conteúdo (mais trabalhoso). Comece pelo mais fácil de resolver.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 13', title:'Estatística Avançada & Argumentação em R&W', sub:'Dias 25–26',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W IX — Argumentação e Synthesis Avançada',
+        topics:['Claim, evidence e warrant — estrutura do argumento','Identificar suposições implícitas no texto','Questões de "enfraquecimento" e "fortalecimento"','Rhetorical Synthesis com múltiplas fontes'],
+        detail:{
+          conteudo:'Para questões de enfraquecimento: a alternativa correta ataca a premissa central do argumento, não um detalhe. Para fortalecimento: adiciona evidência que suporta a conclusão diretamente. Em Rhetorical Synthesis com múltiplas fontes (bullet points), a resposta certa integra as informações de forma precisa e sem distorção.',
+          recursos:['Khan Academy: Argument analysis','Official SAT: Evidence-based questions','Praticar: 15 questões de argumentação SAT'],
+          dica:'Questão de enfraquecimento típica: "O autor conclui que X causa Y com base em correlação". O enfraquecimento mais forte seria: "há uma terceira variável Z que causa tanto X quanto Y simultaneamente".'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Estatística Avançada — Inferência e Amostras',
+        topics:['Tipos de estudo: experimental vs. observacional','Random sampling vs. voluntary response — viés','Margem de erro e intervalos de confiança (conceitual)','Extrapolação: quando é válida e quando não é'],
+        detail:{
+          conteudo:'Estudos experimentais com amostragem aleatória permitem conclusões de CAUSALIDADE. Estudos observacionais permitem apenas CORRELAÇÃO — o SAT testa essa distinção frequentemente. Voluntary response bias: quando as pessoas escolhem participar, a amostra é tendenciosa (geralmente opiniões extremas).',
+          recursos:['Khan: Study design and sampling','Khan: Making inferences from samples','Praticar: 8 questões de inferência estatística SAT'],
+          dica:'Se o SAT descrever um estudo onde os participantes se voluntariaram, qualquer conclusão sobre "a população geral" é inválida — isso é voluntary response bias. Questão frequente!'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 14', title:'Simulado #3 & Análise de Meio de Percurso', sub:'Dias 27–28',
+    sessions:[
+      {
+        day:'DOM', type:'sim',
+        title:'Simulado Completo #3 — Marco de 30 Dias',
+        topics:['Simulado oficial completo (2h14) no Bluebook App','Condições reais: sem interrupções, celular longe','Anotar questões onde sentiu insegurança durante a prova','Revisão completa no dia seguinte'],
+        detail:{
+          conteudo:'Este é o simulado de meio de percurso — um marco importante. Faça nas condições mais reais possíveis: horário fixo, local silencioso, sem consultas. Após terminar, não revise imediatamente — deixe para o dia seguinte com a cabeça mais fria. Isso melhora a qualidade da revisão.',
+          recursos:['Bluebook App: Official Digital SAT Practice','College Board: Full-length practice test','Khan Academy: Detailed score analysis'],
+          dica:'Durante a prova, se ficar preso em uma questão por mais de 90 segundos, marque para revisão e continue. Nunca deixe questões sem resposta — chute inteligente sempre.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Análise Profunda do Simulado #3 + Recalibração',
+        topics:['Revisão questão a questão do Simulado #3','Comparar scores: evolução desde o início','Recalibrar metas: o que é alcançável até setembro?','Ajustar foco das próximas semanas com base nos dados'],
+        detail:{
+          conteudo:'Com os dados de 3 simulados, você agora tem uma curva de evolução clara. Calcule sua taxa de melhora por área. Se Math cresceu 40pts e R&W só 15pts, as próximas semanas devem inverter esse foco. A meta final deve ser calibrada com base na sua taxa real de progresso, não em expectativas abstratas.',
+          recursos:['Planilha de tracking (3 simulados comparados)','Khan Academy: Skill-by-skill breakdown','College Board: Score interpretation guide'],
+          dica:'Regra geral: cada 10 pontos de melhora no SAT requer foco específico num padrão de erro. 100 pontos de melhora = 10 padrões corrigidos. Você tem tempo para isso até setembro.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 15', title:'Álgebra Avançada — Polinômios e Racionais', sub:'Dias 29–30',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Polinômios: Zeros, Divisão e Teorema do Fator',
+        topics:['Teorema do resto: f(a) = resto da divisão por (x−a)','Teorema do fator: se f(a)=0, então (x−a) é fator','Divisão sintética e longa divisão de polinômios','Multiplicidade de raízes: toca ou cruza o eixo x?'],
+        detail:{
+          conteudo:'Teorema do resto: para encontrar o resto de f(x) ÷ (x−a), basta calcular f(a). Mais rápido que dividir! Se f(a)=0, então (x−a) é um fator de f(x) — isso é o teorema do fator. Multiplicidade: raiz com multiplicidade par (x−a)² toca o eixo e volta; multiplicidade ímpar cruza o eixo.',
+          recursos:['Khan: Polynomial division','Khan: Remainder and factor theorems','Praticar: 10 questões de polinômios SAT'],
+          dica:'Questão SAT típica: "If p(3) = 0, which of the following must be a factor of p(x)?" Resposta: (x−3). Aplicação direta do teorema do fator — leva 5 segundos se souber.'
+        }
+      },
+      {
+        day:'SEG', type:'rw',
+        title:'R&W X — Revisão de Gramática: Casos Difíceis',
+        topics:['Cláusulas restritivas vs. não-restritivas (that/which)','Apostrófe: its vs. it\'s, whose vs. who\'s','Colocação de advérbios e adjuntos','Sentenças complexas: subordinação e coordenação'],
+        detail:{
+          conteudo:'"That" introduz cláusula restritiva — necessária para identificar o substantivo (sem vírgula). "Which" introduz cláusula não-restritiva — informação adicional (com vírgula). Exemplo: "The book that I recommended is sold out." vs "The book, which I recommended, is sold out." No primeiro, "that I recommended" identifica qual livro; no segundo, é info extra.',
+          recursos:['Khan: Punctuation — restrictive clauses','Purdue OWL: That vs. Which','Praticar: 12 questões de gramática avançada SAT'],
+          dica:'"Its" é possessivo (pertence a ele). "It\'s" = "it is" ou "it has". O SAT testa isso com frequência. Regra rápida: se você pode substituir por "it is", use it\'s. Se não, use its.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 16', title:'Funções Exponenciais Avançadas & Vocabulário Nível 2', sub:'Dias 31–32',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W XI — Vocabulário Avançado e Words in Context II',
+        topics:['50 palavras acadêmicas de nível 2 (mais difíceis)','Raízes latinas e gregas para deduzir significados','Vocabulário em contextos científicos e históricos','Questões de tone: positivo, negativo, neutro, irônico'],
+        detail:{
+          conteudo:'Raízes úteis: "bene" (bem: beneficial, benevolent), "mal" (mau: malevolent, malign), "cred" (crença: credible, discredit), "dict" (dizer: contradict, predict), "rupt" (romper: disrupt, interrupt), "port" (carregar: export, import). Saber 20 raízes multiplica seu vocabulário por dezenas de palavras.',
+          recursos:['Quizlet: SAT Vocabulary Lists (Top 500)','Merriam-Webster Word of the Day','Vocabulary.com: SAT prep lists','Praticar: 15 questões de vocabulário nível 2'],
+          dica:'Para questões de tone: procure palavras carregadas emocionalmente no texto. "Catastrophic" vs "problematic" — a primeira indica tom alarmante, a segunda, analítico. O tom está nas escolhas de palavras, não no tema.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Exponenciais e Logaritmos — Contextos Avançados',
+        topics:['Decaimento exponencial: meia-vida e tempo de vida','Comparar modelos: linear vs. exponencial vs. quadrático','Equações exponenciais: resolver com mesma base','Aplicações: juros, população, radioatividade'],
+        detail:{
+          conteudo:'Para identificar o modelo certo: diferença constante → linear. Razão constante → exponencial. Diferença da diferença constante → quadrático. O SAT frequentemente dá dados em tabela e pede qual modelo melhor os representa. Calcule as diferenças entre os termos consecutivos para decidir.',
+          recursos:['Khan: Exponential vs. linear growth','Khan: Exponential decay','Praticar: 10 questões de modelagem SAT'],
+          dica:'Questão clássica: "A population doubles every 10 years. Which function models this?" → P(t) = P₀ · 2^(t/10). O "t/10" representa quantas vezes a população dobrou no tempo t.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 17', title:'Geometria III — Trigonometria e Círculos Avançados', sub:'Dias 33–34',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Trigonometria Avançada e Círculos',
+        topics:['Ângulos em radianos: conversão e arco','Círculo unitário: seno e cosseno de ângulos especiais','Equação do círculo: (x−h)²+(y−k)²=r²','Ângulos inscritos e centrais: relações e arcos'],
+        detail:{
+          conteudo:'Conversão: 180° = π radianos. Logo, 90° = π/2, 60° = π/3, 45° = π/4, 30° = π/6. Para equação do círculo, complete o quadrado se necessário: x²+y²+4x−6y=3 → (x+2)²+(y−3)²=16. Centro (−2, 3), raio 4. O SAT cobra isso em questões de geometria analítica.',
+          recursos:['Khan: Trigonometry and radians','Khan: Circle equations','Praticar: 10 questões de trigonometria e círculos SAT'],
+          dica:'Ângulo central = arco que ele subentende. Ângulo inscrito = metade do arco. Se o ângulo inscrito está sobre um diâmetro, ele é sempre 90°. Esse fato resolve muitas questões rapidamente.'
+        }
+      },
+      {
+        day:'SEG', type:'rw',
+        title:'R&W XII — Prática Intensiva de Questões Completas',
+        topics:['30 questões cronometradas de R&W (1:10 cada)','Todos os tipos: vocabulário, gramática, leitura, dados','Revisão imediata com análise de padrões','Identificar categorias com mais erros neste ponto'],
+        detail:{
+          conteudo:'Esta sessão é de prática pura — sem estudar conteúdo novo. Faça 30 questões no tempo real (33 minutos), depois revise cada erro com atenção. O objetivo é consolidar o que foi aprendido até aqui e medir velocidade real de resposta. Use o banco de questões do Khan Academy ou questões oficiais do College Board.',
+          recursos:['Khan Academy: Full R&W question bank','Official SAT Practice: R&W sections','Banco de questões do College Board (gratuito)'],
+          dica:'Se você está consistentemente errando questões de gramática mas acertando as de leitura (ou vice-versa), essa é a informação mais valiosa desta sessão. Concentre as próximas revisões no elo mais fraco.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 18', title:'Prática Intensiva de Math & Simulado #4', sub:'Dias 35–36',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Math — Sessão de Prática Intensiva Completa',
+        topics:['44 questões cronometradas de Math (ritmo real: 70 min)','Todas as categorias: álgebra, funções, geometria, estatística','Usar Desmos estrategicamente — quando ajuda e quando atrasa','Identificar questões onde o tempo é o maior problema'],
+        detail:{
+          conteudo:'Faça os 44 itens no tempo real (70 minutos). Após terminar, separe em 3 grupos: (A) acertei com confiança, (B) acertei com dúvida, (C) errei. Revise profundamente o grupo C e superficialmente o B. Anote o tempo médio por questão — se está acima de 1:35, a velocidade é um problema a atacar.',
+          recursos:['Khan Academy: Full Math practice section','Official SAT Math modules (Bluebook)','Desmos Scientific Calculator — praticar atalhos'],
+          dica:'Atalho no Desmos: para sistemas de equações, insira ambas as equações e veja a interseção visualmente. Mais rápido que resolver algebricamente em muitos casos. Mas cuidado: nem sempre é possível ler as coordenadas com precisão.'
+        }
+      },
+      {
+        day:'SEG', type:'sim',
+        title:'Simulado Completo #4 — Foco em Módulo 2',
+        topics:['Simulado completo com foco especial no desempenho no Módulo 2','Estratégia: maximizar acertos no Módulo 1 para chegar ao Módulo 2 difícil','Analisar: você está chegando ao Módulo 2 hard? Isso indica score alto','Revisão focada: questões de dificuldade alta que errou'],
+        detail:{
+          conteudo:'O formato adaptativo do SAT Digital faz com que bom desempenho no Módulo 1 leve você ao Módulo 2 de maior dificuldade — que tem teto de pontuação mais alto. Após o simulado, identifique em qual módulo 2 você caiu (fácil ou difícil) e compare sua performance entre os dois módulos.',
+          recursos:['Bluebook App: Official Practice Test #4','Khan Academy: Adaptive practice','College Board: Understanding adaptive testing'],
+          dica:'Se você caiu consistentemente no Módulo 2 fácil, o Módulo 1 precisa de atenção especial. Priorize precisão no Módulo 1 — vale mais acertar 20/22 do que tentar todas as 22 e errar 6.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 19', title:'Revisão Temática — Math Ponto a Ponto', sub:'Dias 37–38',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Math — Revisão: Álgebra e Funções (tudo junto)',
+        topics:['Revisão integrada: equações lineares + quadráticas + exponenciais','Word problems complexos: múltiplos passos','Questões de "given that" e substituição encadeada','Erros de unidade e conversão — evitar armadilhas'],
+        detail:{
+          conteudo:'Questões de múltiplos passos são as mais longas do SAT Math. Estratégia: leia o problema inteiro antes de calcular, identifique o que é pedido, e planeje os passos antes de executar. Muitos erros acontecem porque o estudante resolve metade do problema e para. Sempre confira se respondeu o que foi pedido.',
+          recursos:['Khan: Multi-step problems','Official SAT: Hard Math questions','Praticar: 15 questões nível 4-5 de Math SAT'],
+          dica:'Para questões com "given that f(a) = b, find f⁻¹(b)": a resposta é a. Direto. Se a função leva a para b, a inversa leva b de volta para a. Questão de 5 segundos se você entender o conceito.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Math — Revisão: Estatística, Geometria e Tópicos Difíceis',
+        topics:['Estatística: questões de inferência e design de estudo','Geometria: questões compostas (figura dentro de figura)','Números complexos: i² = −1 (aparece raramente mas cai)','Sequências e padrões: aritméticas e geométricas'],
+        detail:{
+          conteudo:'Números complexos: i=√(−1), i²=−1, i³=−i, i⁴=1 (ciclo de 4). Para multiplicar (a+bi)(c+di): FOIL e substitua i²=−1. O SAT raramente cobra isso, mas quando cobra é questão fácil para quem conhece. Sequências aritméticas: aₙ = a₁ + (n−1)d. Sequências geométricas: aₙ = a₁ · r^(n−1).',
+          recursos:['Khan: Complex numbers','Khan: Sequences','Praticar: 10 questões de tópicos mistos hard SAT'],
+          dica:'Para figuras compostas (círculo dentro de quadrado, triângulo inscrito em círculo): resolva cada forma separadamente e combine. Área da região hachurada = área total − área da forma interna.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 20', title:'Revisão Temática — R&W Ponto a Ponto', sub:'Dias 39–40',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W — Revisão: Standard English e Expression of Ideas',
+        topics:['Revisão completa: todas as regras de gramática do SAT','Expression of Ideas: synthesis, transitions, concisão','Exercícios de eliminação de alternativas','Questões de pontuação: o caso mais difícil'],
+        detail:{
+          conteudo:'A pontuação mais difícil do SAT envolve cláusulas apositivas e explicativas. Exemplo: "My brother, who lives in Paris, is a chef." — as vírgulas indicam que a informação é dispensável. Se fosse "My brother who lives in Paris" (sem vírgulas), implicaria que tenho mais de um irmão e preciso especificar qual. O SAT testa essa distinção.',
+          recursos:['Khan: All grammar modules','Official SAT: Standard English Conventions','Praticar: 20 questões de gramática e expressão SAT'],
+          dica:'Regra geral de concisão: se duas alternativas estão gramaticalmente corretas, escolha a mais curta. O SAT valoriza eficiência — informação extra não pedida é quase sempre errado.'
+        }
+      },
+      {
+        day:'SEG', type:'rw',
+        title:'R&W — Revisão: Information & Ideas e Craft & Structure',
+        topics:['Questões de main idea: padrões e armadilhas comuns','Command of Evidence: texto e dados — revisão completa','Cross-text connections: estratégia para textos duplos','Questões de 5 pontos: as mais difíceis de R&W'],
+        detail:{
+          conteudo:'Questões de Cross-text (dois textos) seguem um padrão: Text 1 apresenta uma visão, Text 2 responde ou contrasta. A questão pede como o autor do Texto 2 reagiria à ideia do Texto 1. Leia cada texto isoladamente primeiro, identifique a posição central de cada um, depois responda a pergunta de conexão.',
+          recursos:['Khan: Cross-text connections','Official SAT: Reading — hard questions','Praticar: 15 questões de leitura nível difícil SAT'],
+          dica:'Cross-text armadilha: a alternativa errada geralmente descreve a posição de um texto aplicada ao outro (invertida). Se Text 1 é otimista e Text 2 é cético, a alternativa errada diz "Text 2 concordaria com Text 1".'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 21', title:'Simulado #5 & Intensificação Final', sub:'Dias 41–42',
+    sessions:[
+      {
+        day:'DOM', type:'sim',
+        title:'Simulado Completo #5 — Condições de Prova Real',
+        topics:['Simulado completo no Bluebook App (prova digital real)','Estratégia de pacing testada: marcar, pular, revisar','Gerenciar energia: pausar entre seções, beber água','Registro: como você se sentiu durante cada módulo'],
+        detail:{
+          conteudo:'A partir de agora, cada simulado deve ser tratado como a prova real. Acorde cedo, almoce, vá ao banheiro antes, e estude no mesmo horário que faria o SAT de verdade. Registre também dados subjetivos: em qual módulo você se sentiu mais cansado? Em qual tipo de questão sua concentração caiu? Isso é informação valiosa.',
+          recursos:['Bluebook App: Full-length practice','Estratégia de pacing (revise suas anotações)','Caderno de simulados: registre dados de todos'],
+          dica:'Gerenciamento de energia no SAT real: use a pausa de 10 minutos entre R&W e Math para respirar, beber água e redefinir o foco. Muitos estudantes ignoram isso e chegam no Math já esgotados.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Plano de Ataque Final — Últimas 3 Semanas',
+        topics:['Análise dos 5 simulados: curva de evolução completa','Identificar teto atual e potencial até setembro','Definir os 5 tópicos prioritários para as últimas semanas','Criar cronograma de revisão intensiva customizado'],
+        detail:{
+          conteudo:'Com 5 simulados de dados, você tem uma imagem muito clara do seu perfil. Calcule: (1) score médio das últimas 3 provas, (2) variância entre simulados (inconsistência é sinal de atenção, não conteúdo), (3) quais 5 tipos de questão têm mais erros. Essas 5 categorias são seu foco exclusivo nas últimas semanas.',
+          recursos:['Planilha de análise de simulados','Khan Academy: Skill recommendations','College Board: Score improvement strategies'],
+          dica:'Inconsistência de score entre simulados (variar 80+ pontos) geralmente indica problema de atenção, não de conteúdo. Técnicas de mindfulness, respiração antes da prova e sono adequado têm impacto real no score.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 22', title:'Foco nos Pontos Fracos — Math', sub:'Dias 43–44',
+    sessions:[
+      {
+        day:'DOM', type:'math',
+        title:'Math — Ataque aos 3 Tópicos com Mais Erros',
+        topics:['Sessão dedicada aos 3 tópicos Math com mais erros nos simulados','Exercícios em volume: 15+ questões por tópico','Técnica de revisão imediata: explique em voz alta por que errou','Solidificar padrões de resolução para cada tópico'],
+        detail:{
+          conteudo:'Esta sessão é 100% personalizada com base no seu caderno de erros. Identifique os 3 tópicos Math com mais ocorrências de erro, e faça 15 questões de cada um — não como simulado, mas como prática deliberada: resolva, confira, entenda o erro, resolva de novo de um ângulo diferente.',
+          recursos:['Khan Academy: Topic-specific practice','Official SAT: Questions by skill','Caderno de erros — reabrir e reresolverossas questões'],
+          dica:'Prática deliberada vs. prática passiva: não basta "fazer questões". Para cada erro, escreva em uma linha: "Errei porque [razão específica]. Na próxima vez vou [ação específica]." Isso consolida o aprendizado.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Math — Questões de Alta Dificuldade (Nível 4-5)',
+        topics:['Questões dos últimos 30% do módulo adaptativo (as mais difíceis)','Sistemas com 3 variáveis e inequações compostas','Questões de geometria analítica avançada','Estratégia: quando tentar vs. quando pular inteligentemente'],
+        detail:{
+          conteudo:'As questões de nível 4-5 no SAT Math costumam ser combinações de dois conceitos. Exemplo: uma questão que envolve funções quadráticas E probabilidade. Estratégia: resolva as partes separadamente e combine. Se não conseguir em 2 minutos, pule — não vale a pena sacrificar 3 questões fáceis para tentar uma difícil.',
+          recursos:['Khan Academy: Challenge problems','r/Sat (Reddit): Hard Math problems discussion','Official SAT: Hardest questions database'],
+          dica:'Score 750+ em Math requer acertar questões de nível 4-5. Score 650-700 não requer — foque em não errar as de nível 1-3. Conheça seu objetivo de score antes de decidir quanta energia investir nas questões difíceis.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 23', title:'Foco nos Pontos Fracos — R&W', sub:'Dias 45–46',
+    sessions:[
+      {
+        day:'DOM', type:'rw',
+        title:'R&W — Ataque aos 3 Tipos de Questão com Mais Erros',
+        topics:['Sessão dedicada aos 3 tipos R&W com mais erros nos simulados','15+ questões por tipo com revisão imediata','Técnica de auto-explicação: por que esta alternativa está errada?','Padrões de distratores: o que o SAT usa para enganar'],
+        detail:{
+          conteudo:'Os distratores mais comuns do SAT R&W: (1) alternativas que são verdadeiras mas não respondem à pergunta, (2) alternativas que usam palavras do texto mas distorcem o significado, (3) alternativas muito extremas ("always", "never"), (4) alternativas que confundem o autor com o narrador ou personagem. Reconhecer esses padrões transforma questões difíceis em questões gerenciáveis.',
+          recursos:['Khan Academy: R&W skill-specific practice','Official SAT: R&W question explanations','Caderno de erros — reresolverossas questões de R&W'],
+          dica:'Para eliminar distratores tipo 2 (palavras do texto com significado distorcido): releia a frase completa com a alternativa substituída. Se algo soa "quase certo mas não exatamente", é distrator. O SAT cria essas armadilhas propositalmente.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Revisão de Vocabulário Intensiva + Leitura Extensiva',
+        topics:['Revisão de todos os flashcards de vocabulário acumulados','Leitura de 2 artigos longos em inglês com análise ativa','Prática de leitura rápida: scan vs. skim vs. close reading','Palavras de transição e conectores — revisão completa'],
+        detail:{
+          conteudo:'Leitura ativa: enquanto lê um artigo, sublinhe (mentalmente ou no papel): (1) a tese central, (2) cada argumento principal, (3) palavras que não conhece. Ao terminar, resuma em 2 frases. Isso é o que o SAT pede — não memorização, mas compreensão estruturada. Faça isso com um artigo de ciência e um de humanidades.',
+          recursos:['The Atlantic: Magazine.theatlantic.com','Scientific American: Scientificamerican.com','Quizlet: Revisão de todos os flashcards de vocabulário'],
+          dica:'Reading speed goal para o SAT: você precisa ler passagens de 150 palavras em menos de 45 segundos para sobrar tempo para pensar na resposta. Se está abaixo disso, leitura extensiva diária (10-15 min) em inglês é o caminho mais rápido para melhorar.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 24', title:'Simulado #6 & Revisão Final de Conteúdo', sub:'Dias 47–48',
+    sessions:[
+      {
+        day:'DOM', type:'sim',
+        title:'Simulado Completo #6 — Penúltimo Teste Completo',
+        topics:['Simulado completo — aplicar todas as estratégias aprendidas','Testar pacing refinado: nenhuma questão sem resposta','Estratégia adaptativa: identificar dificuldade no Módulo 1','Revisão: focar apenas nas questões erradas com confiança'],
+        detail:{
+          conteudo:'Este é o penúltimo simulado completo. A diferença agora: após terminar, você deve conseguir explicar em voz alta por que cada questão que errou está errada. Se não consegue explicar, ainda há lacuna de conceito. Se consegue explicar mas errou, é erro de atenção — revisível com checklist.',
+          recursos:['Bluebook App ou Official Practice Test','Caderno de simulados: registre dados do #6','Khan Academy: Comparar com score report anterior'],
+          dica:'Crie um checklist pessoal de "armadilhas que eu caio" — as 5-10 erros mais frequentes seus nos simulados. Leia esse checklist nos últimos 2 minutos de cada módulo antes de submeter.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Revisão Final de Conteúdo — Pontos Cegos',
+        topics:['Identificar qualquer tópico ainda não consolidado','Revisão rápida (flash review) de fórmulas e regras','Criar cheat sheet mental: as 20 regras mais cobradas','Simular a véspera de prova: o que você vai revisar?'],
+        detail:{
+          conteudo:'Neste ponto, não há mais tempo para aprender tópicos inteiramente novos. O foco é consolidar o que já foi estudado. Crie um "cheat sheet mental" — uma lista das 10 regras de gramática mais cobradas e das 10 fórmulas Math mais usadas. Revise essa lista nos dias antes do SAT real.',
+          recursos:['Cheat sheet pessoal de gramática','Folha de fórmulas Math (sua, não a do SAT)','Khan Academy: Quick review por habilidade'],
+          dica:'Efeito de interferência: estudar conteúdo novo na semana do SAT pode confundir o que você já sabe. A partir daqui, foque em revisar e praticar, não em aprender coisas novas.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 25', title:'Semana de Revisão Final — Sem Conteúdo Novo', sub:'Dias 49–50',
+    sessions:[
+      {
+        day:'DOM', type:'strat',
+        title:'Revisão de Estratégia e Pacing — Tudo Junto',
+        topics:['Revisar estratégias para cada tipo de questão SAT','Testar pacing: cronometrar 10 questões de cada área','Simular decisão em tempo real: tentar, pular ou chutar?','Revisar o checklist pessoal de erros frequentes'],
+        detail:{
+          conteudo:'Esta semana é sobre consolidação, não aprendizado. Para cada tipo de questão, verbalize sua estratégia em voz alta antes de resolver: "Esta é uma questão de transitions. Vou ler as duas frases, identificar a relação, e escolher o conectivo correto." Essa verbalização cria automatismo para a prova real.',
+          recursos:['Suas anotações e cheat sheet pessoal','Caderno de erros — última revisão','Khan Academy: Quick targeted practice'],
+          dica:'Automatismo é o objetivo final. Quando você não precisa pensar "o que fazer agora" e simplesmente executa o processo, sua velocidade aumenta e sua taxa de erro cai. O treinamento das últimas semanas foi para isso.'
+        }
+      },
+      {
+        day:'SEG', type:'math',
+        title:'Math — Flash Review: Todas as Fórmulas e Regras',
+        topics:['Revisão rápida de todas as fórmulas Math do SAT','10 questões de cada área principal (cronometradas)','Foco em não errar questões de nível 1-2 (as "fáceis")','Simular nervosismo: resolver com pressão de tempo extra'],
+        detail:{
+          conteudo:'Questões de nível 1-2 no SAT equivalem a 60-70% da prova. Errar essas é o que impede score alto — não é o conteúdo difícil. Faça 10 questões de nível 1-2 de cada área (álgebra, funções, estatística, geometria) e verifique se está acertando >90%. Se não, há um ponto cego básico ainda não resolvido.',
+          recursos:['Khan Academy: Nível 1-2 por habilidade','Official SAT: Questões iniciais de cada módulo','Fórmula sheet pessoal — última revisão'],
+          dica:'Na prova real, a primeira questão de cada módulo é de nível 1 e deve ser resolvida em menos de 60 segundos. Se uma questão "fácil" está demorando mais que isso, há algo errado com seu processo — não com o conteúdo.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 26', title:'Simulado Final #7 & Ajustes Finais', sub:'Dias 51–52',
+    sessions:[
+      {
+        day:'DOM', type:'sim',
+        title:'Simulado Final #7 — Prova Definitiva de Preparação',
+        topics:['Último simulado completo antes de setembro','Condições idênticas ao SAT real: mesmo horário, local, materiais','Estratégia: sem concessões — aplicar tudo que aprendeu','Após o simulado: registre score e sensações'],
+        detail:{
+          conteudo:'Este é o simulado mais importante do plano. Trate como o SAT real: acorde no mesmo horário que acordaria no dia da prova, vá ao local de estudo com os mesmos materiais (ID, lanche, água), e inicie no mesmo horário. A experiência de simular o ambiente completo reduz a ansiedade no dia real significativamente.',
+          recursos:['Bluebook App: último simulado oficial disponível','Ou: Official College Board Practice Test não usado ainda','Caderno de simulados: registrar score final'],
+          dica:'Se o score do Simulado #7 for significativamente menor que os anteriores, não entre em pânico. Performance cai em prova "de verdade" por ansiedade. O score real tende a ficar entre sua média e seu pico dos simulados.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Análise Final + Preparação Logística para o SAT',
+        topics:['Revisão tranquila do Simulado #7 — sem pressão','Preparação logística: local de prova, documentos, materiais','O que fazer na semana da prova (e o que NÃO fazer)','Gerenciamento de ansiedade: técnicas práticas'],
+        detail:{
+          conteudo:'Semana da prova: (1) não estude conteúdo novo, (2) faça apenas revisões curtas (30 min/dia máximo), (3) durma 8h por 3 noites antes da prova, (4) faça exercício físico — comprovadamente reduz ansiedade de prova. Na véspera: revise o cheat sheet, separe os materiais, defina o trajeto ao local de prova.',
+          recursos:['College Board: Test day checklist','Técnicas de respiração (4-7-8 breathing)','Revisão do cheat sheet pessoal'],
+          dica:'O sono da noite antes da prova é menos importante que o sono de 2 noites antes. Se ficar ansioso e dormir mal na véspera, não entre em pânico — o sono acumulado dos dias anteriores é o que sustenta a performance cognitiva.'
+        }
+      }
+    ]
+  },
+  {
+    num:'SEMANA 27–30', title:'Manutenção, Revisão e Confiança Final', sub:'Dias 53–60',
+    sessions:[
+      {
+        day:'DOM', type:'strat',
+        title:'Manutenção: Prática Curta Diária + Revisão de Erros',
+        topics:['10-15 questões por dia de áreas específicas (não simulado completo)','Revisar cheat sheet de fórmulas e gramática todo dia','Leitura em inglês: 15 min diários de textos acadêmicos','Manter ritmo sem sobrecarga — consistência acima de intensidade'],
+        detail:{
+          conteudo:'Nas últimas semanas antes do SAT, a estratégia muda: menos volume, mais precisão. Faça 10-15 questões por dia, sempre das áreas onde ainda erra, mas sem pressão de simulado completo. O objetivo é manter o cérebro "aquecido" para o formato das questões sem criar fadiga.',
+          recursos:['Khan Academy: Daily practice (10-15 questões)','Quizlet: Revisão diária de vocabulário','Cheat sheet pessoal — releitura diária'],
+          dica:'Regra das últimas 2 semanas: se está errando questões que sabia antes, é sinal de fadiga, não de regressão. Reduza o volume, aumente o sono, e mantenha a confiança. Você já construiu a base — ela não desaparece.'
+        }
+      },
+      {
+        day:'SEG', type:'strat',
+        title:'Dia Anterior ao SAT — Revisão Leve e Preparação Mental',
+        topics:['Revisão de 30 minutos: apenas cheat sheet e fórmulas','Verificar logística: local, hora, documentos, materiais','Alimentação, hidratação e sono — protocolos para performance','Visualização positiva: imaginar a prova correndo bem'],
+        detail:{
+          conteudo:'Na véspera do SAT: (1) revise o cheat sheet por 30 min, (2) separe tudo para o dia seguinte, (3) durma às 22h-23h, (4) defina 2 alarmes. Não estude por mais de 1 hora. Seu cérebro precisa de descanso, não de mais informação. A preparação já foi feita — agora é execução.',
+          recursos:['Cheat sheet pessoal — última leitura','College Board: What to bring on test day','Exercício físico leve: caminhada de 20 minutos'],
+          dica:'Visualização: feche os olhos por 5 minutos e imagine a prova do início ao fim, com você resolvendo cada questão com calma e confiança. Atletas de elite usam essa técnica. Funciona porque o cérebro não distingue bem entre experiência real e visualizada — ambas reforçam os circuitos neurais.'
+        }
+      }
+    ]
   }
-  return dates;
-}
-
-const START = '2026-05-03';
-const END   = '2026-09-28';
-const dates = getSessionDates(START, END);
-
-const curriculum = [
-  { title: 'Diagnóstico Inicial', type: 'simulado', topics: ['Mini-simulado oficial', 'Identificar pontos fracos', 'Definir metas de pontuação'] },
-  { title: 'Álgebra Linear I', type: 'math', topics: ['Equações de 1º grau', 'Inequações', 'Sistemas lineares'] },
-  { title: 'Reading: Ideia Principal', type: 'reading', topics: ['Main idea & purpose', 'Inferências diretas', 'Vocabulário em contexto'] },
-  { title: 'Álgebra Linear II', type: 'math', topics: ['Funções lineares', 'Gráficos lineares', 'Interceptos e inclinação'] },
-  { title: 'Writing: Gramática Essencial', type: 'reading', topics: ['Sujeito-verbo concordância', 'Pronomes', 'Pontuação básica'] },
-  { title: 'Funções & Gráficos', type: 'math', topics: ['Domínio e imagem', 'Funções quadráticas', 'Parábolas'] },
-  { title: 'Reading: Estrutura de Texto', type: 'reading', topics: ['Text structure', 'Transições', 'Propósito retórico'] },
-  { title: 'Percentuais & Razões', type: 'math', topics: ['Porcentagem', 'Proporção', 'Razão e taxa de variação'] },
-  { title: 'Writing: Coesão e Fluxo', type: 'reading', topics: ['Coerência de argumento', 'Ordem lógica', 'Conectivos'] },
-  { title: 'Revisão Fase 1 + Simulado Parcial', type: 'simulado', topics: ['Revisão de erros acumulados', 'Mini-simulado módulo Math', 'Análise de desempenho'] },
-  { title: 'Equações Quadráticas', type: 'math', topics: ['Fatoração', 'Fórmula quadrática', 'Discriminante'] },
-  { title: 'Reading: Evidência & Dados', type: 'reading', topics: ['Command of evidence', 'Gráficos e tabelas', 'Interpretação de dados'] },
-  { title: 'Sistemas Quadráticos', type: 'math', topics: ['Sistemas linear-quadrático', 'Número de soluções', 'Problemas contextuais'] },
-  { title: 'Writing: Precisão Linguística', type: 'reading', topics: ['Word choice', 'Concisão', 'Tom e audiência'] },
-  { title: 'Estatística & Probabilidade I', type: 'math', topics: ['Média, mediana, moda', 'Desvio padrão (conceito)', 'Probabilidade básica'] },
-  { title: 'Reading: Textos Literários', type: 'reading', topics: ['Ficção e narrativa', 'Personagem e ponto de vista', 'Tom e atmosfera'] },
-  { title: 'Exponenciais & Radicais', type: 'math', topics: ['Propriedades de expoentes', 'Funções exponenciais', 'Radicais e potências fracionárias'] },
-  { title: 'Writing: Edição Avançada', type: 'reading', topics: ['Estrutura de sentença', 'Modificadores', 'Paralelismo'] },
-  { title: 'Geometria I – Plana', type: 'math', topics: ['Área e perímetro', 'Triângulos', 'Círculos'] },
-  { title: 'Reading: Textos de Ciências', type: 'reading', topics: ['Ciência e dados', 'Causa e efeito', 'Hipótese e conclusão'] },
-  { title: 'Geometria II – Analítica', type: 'math', topics: ['Distância e ponto médio', 'Equação da reta', 'Equação do círculo'] },
-  { title: 'Simulado Completo #1', type: 'simulado', topics: ['Simulado full (2h14)', 'Revisão detalhada', 'Ajuste de estratégia'] },
-  { title: 'Trigonometria Básica', type: 'math', topics: ['Seno, cosseno, tangente', 'Triângulos especiais', 'SOH-CAH-TOA'] },
-  { title: 'Reading: Textos de História & Humanidades', type: 'reading', topics: ['Textos históricos', 'Argumento e evidência', 'Perspectiva e contexto'] },
-  { title: 'Estatística II & Amostras', type: 'math', topics: ['Tipos de estudo', 'Amostras e viés', 'Interpretação de gráficos'] },
-  { title: 'Misto: Revisão Mid-Plan', type: 'mixed', topics: ['Revisão Math Fases 1-2', 'Revisão Reading Fases 1-2', 'Caderno de erros'] },
-  { title: 'Álgebra Avançada: Polinômios', type: 'math', topics: ['Divisão de polinômios', 'Teorema do resto', 'Zeros de funções'] },
-  { title: 'Reading: Argumentação Complexa', type: 'reading', topics: ['Contraargumentos', 'Suposições implícitas', 'Enfraquecimento/fortalecimento'] },
-  { title: 'Inequações Quadráticas & Racionais', type: 'math', topics: ['Inequações de 2º grau', 'Teste de intervalos', 'Problemas aplicados'] },
-  { title: 'Writing: Simulação Intensiva', type: 'reading', topics: ['30 questões cronometradas', 'Revisão imediata', 'Padrões de erro'] },
-  { title: 'Problemas em Contexto – Math', type: 'math', topics: ['Word problems', 'Modelagem matemática', 'Unidades de medida'] },
-  { title: 'Simulado Completo #2', type: 'simulado', topics: ['Simulado full (2h14)', 'Revisão intensiva', 'Comparação com Simulado #1'] },
-  { title: 'Funções Avançadas', type: 'math', topics: ['Composição de funções', 'Funções inversas', 'Transformações'] },
-  { title: 'Reading: Vocabulário Avançado', type: 'reading', topics: ['High-frequency SAT words', 'Contexto dedutivo', 'Palavras-raiz latinas'] },
-  { title: 'Geometria III – Sólidos', type: 'math', topics: ['Volume e área superficial', 'Cone, esfera, cilindro', 'Problemas contextuais'] },
-  { title: 'Misto: Pontos Fracos', type: 'mixed', topics: ['Foco nos tópicos com mais erros', 'Exercícios direcionados', 'Khan Academy adaptativo'] },
-  { title: 'Simulado Completo #3', type: 'simulado', topics: ['Simulado full (2h14)', 'Revisão detalhada', 'Score projetado'] },
-  { title: 'Revisão: Math de Alta Frequência', type: 'math', topics: ['Tópicos mais cobrados', 'Truques e atalhos', 'Gestão de tempo Math'] },
-  { title: 'Revisão: Reading de Alta Frequência', type: 'reading', topics: ['Tipos de questão mais comuns', 'Estratégia de eliminação', 'Gestão de tempo R&W'] },
-  { title: 'Simulado Completo #4', type: 'simulado', topics: ['Simulado full (2h14)', 'Análise final de erros', 'Metas por seção'] },
-  { title: 'Revisão Final – Math', type: 'math', topics: ['Flash cards de fórmulas', 'Últimas revisões de conceito', 'Relaxamento de estratégia'] },
-  { title: 'Revisão Final – Reading & Writing', type: 'reading', topics: ['Técnicas de leitura rápida', 'Checklist de gramática', 'Confiança e calma'] },
-  { title: 'Simulado Diagnóstico Final', type: 'simulado', topics: ['Simulado completo', 'Avaliação do progresso total', '🎯 Pronto para o SAT!'] },
 ];
 
-const phases = [
-  { id: 1, label: 'FASE 01', title: 'Fundamentos', range: 'Mai – Jun 14', sessions: [0, 11] },
-  { id: 2, label: 'FASE 02', title: 'Aprofundamento', range: 'Jun 15 – Jul 26', sessions: [12, 25] },
-  { id: 3, label: 'FASE 03', title: 'Prática Intensiva', range: 'Jul 27 – Ago 30', sessions: [26, 35] },
-  { id: 4, label: 'FASE 04', title: 'Simulados & Revisão Final', range: 'Ago 31 – Set', sessions: [36, 99] },
-];
+/* ══ RENDER ══ */
+const DONE_KEY = 'sat60_done_v1';
+let doneSessions = {};
+try { doneSessions = JSON.parse(localStorage.getItem(DONE_KEY)||'{}'); } catch(e){}
 
-const phaseForIndex = i => i <= 11 ? 1 : i <= 25 ? 2 : i <= 35 ? 3 : 4;
+function saveDone(){ try{ localStorage.setItem(DONE_KEY, JSON.stringify(doneSessions)); }catch(e){} }
 
-const typeLabel = { math: 'Matemática', reading: 'Reading & Writing', mixed: 'Misto', simulado: 'Simulado' };
-const typeClass = { math: 'type-math', reading: 'type-reading', mixed: 'type-mixed', simulado: 'type-simulado' };
-const typeIcon  = { math: 'bi-calculator', reading: 'bi-book', mixed: 'bi-layers', simulado: 'bi-clipboard-check' };
+let activeFilter = 'all';
 
-function formatDate(d) {
-  const days   = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-  const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  return `${days[d.getDay()]}, ${String(d.getDate()).padStart(2,'0')} ${months[d.getMonth()]}`;
-}
+function renderWeeks(){
+  const container = document.getElementById('weeks-container');
+  container.innerHTML = '';
+  WEEKS.forEach((week, wi) => {
+    const block = document.createElement('div');
+    block.className = 'week-block';
+    block.dataset.week = wi;
 
-let done = {};
-try { done = JSON.parse(localStorage.getItem(SESSIONS_KEY) || '{}'); } catch(e) {}
-function saveDone() { try { localStorage.setItem(SESSIONS_KEY, JSON.stringify(done)); } catch(e) {} }
+    const sessHTML = week.sessions.map((sess, si) => {
+      const id = `w${wi}s${si}`;
+      const isDone = !!doneSessions[id];
+      const typeMap = {math:'math',rw:'rw',strat:'strat',sim:'sim'};
+      const tagMap = {math:'tt-math',rw:'tt-rw',strat:'tt-strat',sim:'tt-sim'};
+      const labelMap = {math:'Math',rw:'R & W',strat:'Misto',sim:'Simulado'};
+      const dayBadge = sess.day==='DOM' ? 'badge-dom' : 'badge-seg';
 
-function toggleDone(idx) {
-  done[idx] = !done[idx];
-  saveDone();
-  render();
+      return `
+      <div class="session-col" data-type="${sess.type}" data-done="${isDone}">
+        <div class="sc-label">
+          <span class="sc-day-badge ${dayBadge}">${sess.day}</span>
+        </div>
+        <div class="sess type-${typeMap[sess.type]} ${isDone?'done':''}" id="${id}" onclick="toggleSess(this,'${id}')">
+          <div class="sess-top">
+            <span class="type-tag ${tagMap[sess.type]}">${labelMap[sess.type]}</span>
+            <div class="sess-check" onclick="event.stopPropagation();markDone('${id}')">✓</div>
+          </div>
+          <div class="sess-title">${sess.title}</div>
+          <div class="sess-topics">${sess.topics.map(t=>`<span class="t-item">${t}</span>`).join('')}</div>
+          <div class="sess-expand">
+            <div class="expand-section">
+              <div class="expand-label">O que estudar</div>
+              <div class="expand-content"><p>${sess.detail.conteudo}</p></div>
+            </div>
+            <div class="expand-section">
+              <div class="expand-label">Recursos</div>
+              <div class="expand-content">${sess.detail.recursos.map(r=>`<span class="expand-resource">${r}</span>`).join('')}</div>
+            </div>
+            <div class="tip-box">💡 ${sess.detail.dica}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    const totalSess = week.sessions.length;
+    const doneSess = week.sessions.filter((_,si) => !!doneSessions[`w${wi}s${si}`]).length;
+    const pct = totalSess ? Math.round(doneSess/totalSess*100) : 0;
+
+    block.innerHTML = `
+      <div class="week-header" onclick="toggleWeek(${wi})">
+        <span class="week-num">${week.num}</span>
+        <span class="week-title">${week.title}</span>
+        <span class="week-subtitle">${week.sub}</span>
+        <span class="week-toggle">▼</span>
+      </div>
+      <div class="week-body">
+        <div class="sessions-row">${sessHTML}</div>
+        <div class="week-footer">
+          <span class="wf-label">${doneSess}/${totalSess} sessões</span>
+          <div class="wf-prog-track"><div class="wf-prog-fill" style="width:${pct}%"></div></div>
+          <span class="wf-label">${pct}%</span>
+        </div>
+      </div>`;
+
+    container.appendChild(block);
+  });
+
+  applyFilter();
   updateProgress();
 }
 
-const sessionData = curriculum.map((s, i) => ({
-  ...s, idx: i,
-  date: dates[i] || null,
-  phase: phaseForIndex(i),
-}));
-
-document.getElementById('total-sessions').textContent = sessionData.length + ' sessões';
-
-let currentFilter = 'all';
-
-function filterSessions(type, btn) {
-  currentFilter = type;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  render();
+function toggleWeek(wi){
+  const block = document.querySelector(`.week-block[data-week="${wi}"]`);
+  block.classList.toggle('open');
 }
 
-function render() {
-  const container = document.getElementById('sessions-container');
-  container.innerHTML = '';
+function toggleSess(el, id){
+  el.classList.toggle('expanded');
+}
 
-  phases.forEach((phase, pi) => {
-    const phaseSessions = sessionData.filter(s => s.phase === phase.id);
-    const filtered = phaseSessions.filter(s => {
-      if (currentFilter === 'all') return true;
-      if (currentFilter === 'pending') return !done[s.idx];
-      return s.type === currentFilter;
-    });
-    if (filtered.length === 0) return;
+function markDone(id){
+  doneSessions[id] = !doneSessions[id];
+  saveDone();
+  renderWeeks();
+}
 
-    const section = document.createElement('div');
-    section.className = 'phase-section';
-    section.style.animationDelay = (pi * 0.08) + 's';
-
-    section.innerHTML = `
-      <div class="phase-header">
-        <span class="phase-num">${phase.label}</span>
-        <span class="phase-title" style="color:var(--phase${phase.id})">${phase.title}</span>
-        <span class="phase-range">${phase.range}</span>
-      </div>
-      <div class="sessions-grid"></div>
-    `;
-
-    const grid = section.querySelector('.sessions-grid');
-
-    filtered.forEach(s => {
-      const card = document.createElement('div');
-      card.className = `session-card phase-${s.phase}${done[s.idx] ? ' done' : ''}`;
-      card.innerHTML = `
-        <div class="session-top">
-          <div>
-            <div class="session-date">${s.date ? formatDate(s.date) : 'Data a definir'}</div>
-            <div class="session-num">#${String(s.idx + 1).padStart(2,'0')}</div>
-          </div>
-          <div class="session-type ${typeClass[s.type]}">
-            <i class="bi ${typeIcon[s.type]}"></i>
-            ${typeLabel[s.type]}
-          </div>
-        </div>
-        <div class="session-title">${s.title}</div>
-        <div class="session-topics">
-          ${s.topics.map(t => `<span>${t}</span>`).join('')}
-        </div>
-        <button class="check-btn" onclick="event.stopPropagation(); toggleDone(${s.idx})">
-          ${done[s.idx]
-            ? '<i class="bi bi-check-circle-fill"></i> Concluído'
-            : '<i class="bi bi-circle"></i> Marcar como concluído'}
-        </button>
-      `;
-      grid.appendChild(card);
-    });
-
-    container.appendChild(section);
+function applyFilter(){
+  document.querySelectorAll('.session-col').forEach(col => {
+    const type = col.dataset.type;
+    const isDone = col.dataset.done === 'true';
+    let show = true;
+    if(activeFilter === 'math' && type !== 'math') show = false;
+    if(activeFilter === 'rw' && type !== 'rw') show = false;
+    if(activeFilter === 'strat' && type !== 'strat') show = false;
+    if(activeFilter === 'sim' && type !== 'sim') show = false;
+    if(activeFilter === 'pending' && isDone) show = false;
+    col.style.display = show ? '' : 'none';
   });
 }
 
-function updateProgress() {
-  const total = sessionData.length;
-  const completed = sessionData.filter(s => done[s.idx]).length;
-  const pct = total ? Math.round(completed / total * 100) : 0;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-pct').textContent = `${completed} / ${total} concluídas`;
+function setFilter(f, btn){
+  activeFilter = f;
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyFilter();
 }
 
-render();
-updateProgress();
-</script>
+function updateProgress(){
+  let total = 0, done = 0;
+  WEEKS.forEach((w,wi) => {
+    w.sessions.forEach((_,si) => {
+      total++;
+      if(doneSessions[`w${wi}s${si}`]) done++;
+    });
+  });
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('main-progress').style.width = pct+'%';
+  document.getElementById('main-pct-display').textContent = pct+'%';
+  document.getElementById('main-count-display').textContent = `${done} / ${total} concluídas`;
+}
 
+/* ══ PANEL NAV ══ */
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.querySelectorAll('.top-tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+/* ══ REF ITEMS ══ */
+function toggleRef(el){ el.classList.toggle('checked'); }
+
+/* ══ INIT ══ */
+renderWeeks();
+// Open first week by default
+document.querySelector('.week-block').classList.add('open');
+</script>
 </body>
 </html>
